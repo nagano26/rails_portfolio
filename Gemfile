@@ -62,6 +62,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -70,3 +71,11 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'devise'
+gem "bulma-rails"
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem 'rails-i18n'
+gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
