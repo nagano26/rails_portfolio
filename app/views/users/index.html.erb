@@ -1,49 +1,29 @@
-<section class="hero is-success">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        アカウント
-      </h1>
+<nav class="navbar navbar-light navbar-dark bg-dark">
+  <a class="navbar-brand">お住まいの登録 </a>
+</nav>
+
+<section class="section">
+  <div class="container mt-5">
+    <h1 class="title">あなたのプロフィール</h1>
+    <div class="row">
+      <div class="col-12">
+        <table class="table">
+          <tr><th>あなたのメールアドレス</th></tr>
+          <tr><td><%= @user.email %></td></tr>
+          <tr><th>あなたのパスワード</th></tr>
+          <tr><th>*******</th></tr>
+          <tr><th>紹介文</th></tr>
+          <tr><td><%= simple_format @user.profile %></td></tr>
+        <table>
+      </div>
+      <div class="actions">
+        <%= link_to '編集', edit_user_path(@user), class: "button is-success" %>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <h1 class="title" >あなたのプロフィール</h1>
-      <div class="columns is-centered">
-            <div class="card">
-                <div class="card-content">
-                    <table class="table">
-                        <tr>
-                            <th>あなたのメールアドレス</th>
-                        <tr>
-                        <tr>
-                            <th><%= @user.email %></th>
-                        </tr>
-                        <tr>
-                            <th>あなたのパスワード</th>
-                        </tr>
-                        <tr>
-                            <th>*******</th>
-                        </tr>
-                        <tr>
-                          <th>紹介文</th>
-                        </tr>
-                        <tr>
-                          <td><%= simple_format @user.profile %></td>
-                        </tr>
-                    <table>
-                </div>
-            </div>
-        <div class="actions">
-          <%= link_to '編集', edit_user_path(@user), class: "button is-success" %>
-        </div>
-      </div>
-  </div>
-</section>
-
-<section class="section">
+<div>
   <div class="container">
     <div class="title" >過去の投稿欄</div>
       <div class="count">現在のあなたの投稿数：<%= @user.rooms.count %></div> 

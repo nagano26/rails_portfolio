@@ -9,6 +9,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <script src="https://kit.fontawesome.com/484e6509e8.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -24,43 +26,57 @@
     </div>
   <% end %>
 
-  <nav class="navbar is-warning">
-    <div class="navbar-brand"> 
-      <%= link_to root_path, class: "navbar-item" do %>
-        <h1 class="title is-4" style="font-family: cursive;">お部屋探し</h1>
-      <% end %>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <%= link_to '移住home', root_path, class: "navbar-brand" %>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+      <span class="navbar-toggler-icon"></span>
+    </button>
       
-      <div class="navbar-item">
+      <div class="navbar-item mr-3">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
         <%= f.text_field :area, value: @area, :placeholder => "エリア" %>
         <% end %>
       </div>
       
-      <div class="navbar-item">
+      <div class="navbar-item mr-3">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
         <%= f.text_field :keyword, value: @keyword, :placeholder => "キーワード" %>
         <% end %>
       </div>
+      
 
       <% if user_signed_in? %>
-      <div id="navbarExampleTransparentExample" class="navbar-menu">
-        <figure class="host-icon">
-          <%= attachment_image_tag current_user, :profile_image, fallback: "no-image.png", class: "profile_image is-rounded" %>
-        </figure>
-        <div class="navbar-item">
-          <%= link_to "お部屋の登録", new_room_path ,class: "navbar-item button is-warning is-light" %>
-        </div>
-        <div class="navbar-item">
-          <%= link_to "みんなの投稿", rooms_path ,class: "navbar-item button is-warning is-light" %>
-        </div>
-        <div class="navbar-item">
-          <%= link_to "マイページ", users_path(current_user) ,class: "navbar-item button is-warning is-light"%>
-        </div>
-        <div class="navbar-item">
-          <%= link_to "予約部屋履歴", reservations_path(current_user) ,class: "navbar-item button is-warning is-light"%>
-        </div>
-        <div class="navbar-item">
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "navbar-item button is-warning is-light"%>
+      <div class="collapse navbar-collapse" id="Navber">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "お部屋の登録", new_room_path ,class: "navbar-item button is-warning is-light" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "みんなの投稿", rooms_path ,class: "navbar-item button is-warning is-light" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "予約部屋履歴", reservations_path(current_user) ,class: "navbar-item button is-warning is-light"%>
+          </li>
+          <div class="navbar-item">
+            <%= link_to "マイページ", users_path(current_user) ,class: "navbar-item button is-warning is-light"%>
+          </div>
+          <li class="nav-item">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "navbar-item button is-warning is-light"%>
+          </li>
+        </ul>
+        <div class="dropdown">
+          <button type="button" id="dropdown1"
+            class="btn btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+            Dropdown button
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown1">
+            <a class="dropdown-item" href="#">Menu #1</a>
+            <a class="dropdown-item" href="#">Menu #2</a>
+            <a class="dropdown-item" href="#">Menu #3</a>
+          </div>
         </div>
       <% else %>
         <div class="navbar-item">
