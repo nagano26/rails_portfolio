@@ -1,56 +1,166 @@
-<div class="top">
-    <div class="top-main">
-        <div class="conrainer">
-            <div class="row col-lg-6">
-                <div class="form-fream">
-                    <div class="form-area">
-                        <p class="form-area-title">
-                        早速、お部屋探ししてみよう！！！
-                        </p>
-                        <p>
-                        <%= form_with url: search_path, method: :get, local: true do |f| %>
-                            <%= f.text_field :area, value: @area, :placeholder => "東京" %>
-                            <%= f.submit "検索" %>
-                        <% end %>
-                        </p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Modern Business - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <header class="bg-success py-5">
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center justify-content-center">
+                <div class="col-lg-8 col-xl-7 col-xxl-6">
+                    <div class="my-5 text-center text-xl-start">
+                        <h1 class="display-5 fw-bolder text-white mb-2">移住情報掲示板</h1>
+                        <p class="lead fw-normal text-white-50 mb-4">このサイトは、これから移住する人、将来的に移住したいと考えている人に向けて情報発信、応援しています。</p>
+                        <div class="">
+                            <%= link_to "宿を探してみる", rooms_path, class: "btn btn-primary btn-lg px-4 me-sm-3 mr-4 " %>
+                            <%= link_to "移住者の声を聞く", normals_path, class: "btn btn-outline-light btn-lg px-4" %>
+                        </div>
                     </div>
                 </div>
             </div>
-        
         </div>
+    </header>
+           
+    <section class="py-5" id="features">
+        <div class="container px-5 my-5">
+            <div class="row gx-5">
+                <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">移住先人気</br>ランキング</h2></div>
+                <div class="col-lg-8">
+                    <div class="row gx-5 row-cols-1 row-cols-md-2">
+                        <div class="col mb-5 h-100">
+                            <h2 class="feature bg-success bg-gradient text-white rounded-3 mb-3">1位：長野県</h2>
+                            <h2 class="h5">”日本のおへそ”　長野県とは？</h2>
+                            <p class="mb-0">平成30年12月1日時点の総人口は2,061,027人。
+                            世帯数は823,676世帯。自然豊かな地域が多く、レジャー施設や
+                            スキー場なども有名な県です。実はそれだけではなく、子育ての支援制度や
+                            移住サポートなどにも力を入れている地域も多くあります。</p>
+                            <a href="#" class="btn btn-warning">詳しく知りたい</a>
+                        </div>
+                        <div class="col mb-5 h-100">
+                            <h2 class="feature bg-primary bg-gradient text-white rounded-3 mb-3">2位：北海道</h2>
+                            <h2 class="h5">日本一の観光地、北海道</h2>
+                            <p class="mb-0">北海道は海に囲まれた地形のため、海産物がとにかく豊富です。オホーツク海で穫れる毛ガニ、
+                            礼文島や積丹半島で穫れるうになどは、人気の海産物として有名です。
+                            また日本、最大の面積を誇る北海道ならではの景観も楽しめます</p>
+                            <a href="#" class="btn btn-warning">詳しく知りたい</a>
+                        </div>
+                        <div class="col mb-5 mb-md-0 h-100">
+                            <h2 class="feature bg-info bg-gradient text-white rounded-3 mb-3">3位：静岡県</h2>
+                            <h2 class="h5">安定した気候や豊かな自然、食に恵まれた県</h2>
+                            <p class="mb-0">日本のほぼ中央に位置しており、海・山・湖など豊富な自然に恵まれています。
+                            県の北部には、富士山をはじめとして3,000m級の山々が連なり、それらの山地から
+                            流れる水が天竜川・大井川・富士川を形成し、肥沃な土地を作り出し、そんな温暖な気候を活かして、
+                            野菜、果物の栽培が盛んに行われています。</p>
+                            <a href="#" class="btn btn-warning">詳しく知りたい</a>    
+                        </div>
+                        <div class="col h-100">
+                            <h2 class="feature bg-danger bg-gradient text-white rounded-3 mb-3">4位：山梨県</h2>
+                            <h2 class="h5">都心とのアクセス抜群！！二地域居住先の定番</h2>
+                            <p class="mb-0">周囲を囲む美しい山々の景観や、四季折々の自然の風景。
+                            二地域居住にも移住先としても、とても魅力的な場所です。自然に囲まれた地で子育てをしたいと移住してくる若い家族や、定年退職を機に移住しようと、現役のうちからセカンドハウスを構えて二地域居住をする人などが増えています。</p>
+                            <a href="#" class="btn btn-warning">詳しく知りたい</a>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div>
-    <div class="container">
-        <h1 class="section-title">おすすめのエリア</h1>
-        <div class="item_field">
-            <div class="area_item">
-                <p class="area_title">東京</p>
-                <%= form_with url: search_path, method: :get, local: true do |f| %>
-                    <%= f.hidden_field :area, :value => "東京" %>
-                    <%= image_submit_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_tokyo.jpg") %>
-                <% end %>
+    <div class="py-5 bg-light">
+        <div class="container px-5 my-5">
+            <div class="row gx-5">
+                <div class="col-md-8">
+                    <h2>田舎の生活を体験してみる</h2>
+                    <p class="mt-5">移住に置いて、実際の生活感を知るということは非常に大事なことです。</br>移住後のミスマッチを防ぐ為にも、週末を利用して実際に移住先の生活を体験してみましょう。</p>
+                </div>
+                <div class="card shadow p-5  mx-auto mt-5 col-10">
+                <h3 class="form-area-title">・地域検索</h3>
+                <p class="mt-4">・注意</p>
+                <p>場所によってはホテルなどの施設がない場合があります。<br>こちらのサービスは、個人が宿を提供できる仕様</p>
+                <p>
+                    <%= form_with url: search_path, method: :get, local: true do |f| %>
+                        <%= f.text_field :area, value: @area, class: "form-control", :placeholder => "東京" %>
+                        <%= f.submit "検索" %>
+                    <% end %>
+                </p>
             </div>
-            <div class="area_item">
-                <p class="area_title">大阪</p>
-                <%= form_with url: search_path, method: :get, local: true do |f| %>
-                    <%= f.hidden_field :area, :value => "大阪" %>
-                    <%= image_submit_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_osaka.jpg") %>
-                <% end %>
-            </div>
-            <div class="area_item">
-                <p class="area_title">京都</p>
-                <%= form_with url: search_path, method: :get, local: true do |f| %>
-                    <%= f.hidden_field :area, :value => "京都" %>
-                    <%= image_submit_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg") %>
-                <% end %>
-            </div>
-            <div class="area_item">
-                <p class="area_title">北海道</p>
-                <%= form_with url: search_path, method: :get, local: true do |f| %>
-                    <%= f.hidden_field :area, :value => "札幌" %>
-                    <%= image_submit_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_sapporo.jpg") %>
-                <% end %>
             </div>
         </div>
     </div>
-</div>
+        
+    <section class="bg-success py-5">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="text-center">
+                        <h2 class="fw-bolder text-white">移住者の声</h2>
+                        <p class="lead fw-normal text-muted mb-5 text-white-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque fugit ratione dicta mollitia. Officiis ad.</p>
+                    </div>
+                    <div class="text-center">
+                        <%= link_to "移住者の声を聞く", normals_path, class: "btn btn-outline-light btn-lg px-4" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="card shadow p-5 col-lg-4 mt-4">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="mr-2"></div>
+                            <h3>Q1.移住先ではどんな仕事をしていますか？</h3>
+                        <p class="lead mt-5">飲食店を営んでいます。収入は少ないですが、その分、家族と過ごす時間が多く、私はこの生活に満足しています。</p>
+                    </div>
+                </div>
+                <div class="card shadow p-5 col-lg-4 mt-4">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="mr-2"></div>
+                            <h3>Q2.田舎で一番、不便に感じることは何？</h3>
+                        <p class="lead mt-5">買い物ですね。周りにコンビニやスーパーなどはありませんから、買い出しなどは軽く旅行です。（笑）</p>
+                    </div>
+                </div>
+                <div class="card shadow p-5 col-lg-4 mt-4">
+                    <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                        <div class="mr-2"></div>
+                            <h3>Q3.移住希望者に一言</h3>
+                        <p class="lead mt-5">現代はリモートワークなども普及しており、場所に捉われない働き方も多くあります。生活環境が変われば、見る景色も変わります。少しでも移住に興味があれば行動するべきだと思います。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    <section>
+        <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+            <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+                <div class="mb-4 mb-xl-0">
+                    <div class="fs-3 fw-bold text-white">New products, delivered to you.</div>
+                    <div class="text-white-50">Sign up for our newsletter for the latest updates.</div>
+                </div>
+                <div class="ms-xl-4">
+                    <div class="input-group mb-2">
+                        <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
+                        <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign up</button>
+                    </div>
+                    <div class="small text-white-50">We care about privacy, and will never share your data.</div>
+                </div>
+            </div>
+        </aside>
+    </section>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

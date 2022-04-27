@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_14_075152) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_27_015153) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
@@ -21,6 +21,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_075152) do
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "normals", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "before_address"
+    t.string "current_address"
+    t.text "trigger"
+    t.text "preparation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

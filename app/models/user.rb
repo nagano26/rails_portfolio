@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :rooms, dependent: :destroy
   has_many :reservations, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :normals, dependent: :destroy
 
   def already_favorited?(room)
     self.favorites.exists?(room_id: room.id)

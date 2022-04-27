@@ -1,5 +1,5 @@
 <%= render "shared/error", obj: @reservation %>
-    <%=form_with model: @reservation do |f| %>
+    <%=form_with model: @reservation, local: true do |f| %>
         <table class="table table-striped">
             <h3 class="title">予約画面</h3>
             <tr><th><%= f.label :start_at, "チェックイン日" %></th></tr>

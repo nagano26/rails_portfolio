@@ -4,28 +4,27 @@
 
 <section class="section">
   <div class="container mt-5">
-    <h1 class="title">あなたのプロフィール</h1>
+    <h1 class="title">プロフィール</h1>
     <div class="row">
       <div class="col-12">
         <table class="table">
-          <tr><th>あなたのメールアドレス</th></tr>
+          <tr><%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class: "profile_image mb-4" %></tr>
+          <tr><th>・ユーザー名</th></tr>
+          <tr><td><%= @user.username %></td></tr>
+          <tr><th>・あなたのメールアドレス</th></tr>
           <tr><td><%= @user.email %></td></tr>
-          <tr><th>あなたのパスワード</th></tr>
-          <tr><th>*******</th></tr>
-          <tr><th>紹介文</th></tr>
+          <tr><th>・紹介文</th></tr>
           <tr><td><%= simple_format @user.profile %></td></tr>
         <table>
       </div>
-      <div class="actions">
-        <%= link_to '編集', edit_user_path(@user), class: "button is-success" %>
-      </div>
+      <%= link_to '編集', edit_user_path(@user), class: "btn btn-outline-primary mb-3"%>
     </div>
   </div>
 </section>
 
-<div>
-  <div class="container">
-    <div class="title" >過去の投稿欄</div>
+<section class="section">
+  <div class="container mt-4">
+    <h2 class="title">過去の投稿欄</h2>
       <div class="count">現在のあなたの投稿数：<%= @user.rooms.count %></div> 
     <div class="columns is-multiline">
       <% @user.rooms.each do |room| %>
