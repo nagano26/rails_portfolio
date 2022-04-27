@@ -1,1 +1,27 @@
-sasasa
+<nav class="navbar navbar-light navbar-dark bg-dark">
+    <a class="navbar-brand">みんなの移住のきっかけ</a>
+</nav>
+
+<section class="section">
+    <div class="container mt-5">
+        <% @normals.each do |normal| %>
+        <table class="table table-striped table-bordered">
+            <caption>List of users</caption>
+            <tr>
+            <th>ユーザー名</th>
+            <th>以前のお住まいは？</th>
+            <th>現在のお住まいは？</th>
+            <th>移住のきっかけ</th>
+            <th>投稿時間</th>
+            </tr>
+            <tr>
+            <td><%= normal.user.username %></td>
+            <td><%= normal.before_address %></td>
+            <td><%= normal.current_address %></td>
+            <td><%= link_to "きっかけを詳しく見る", normal_path(normal) %></td>
+            <td><%= normal.created_at.to_s(:datetime_jp) %></td>
+            </tr>
+        <% end %>
+        </table>
+    </div>
+</section>

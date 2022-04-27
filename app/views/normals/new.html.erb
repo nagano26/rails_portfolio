@@ -1,2 +1,40 @@
-<h1>Normals#new</h1>
-<p>Find me in app/views/normals/new.html.erb</p>
+<nav class="navbar navbar-light navbar-dark bg-dark">
+    <a class="navbar-brand">移住について教えて</a>
+</nav>
+
+<%= render "shared/error", obj: @normal %>
+
+<section class="section">
+  <div class="container mt-5">
+  <br>
+    <h1>フォーム一覧</h1>
+  <br>    
+    <div class="row">
+      <div class="col-10">
+          <%= form_for @normal do |f| %>
+              <div class="form-group">
+                <%= f.label :before_address, "・以前お住まいの都道府県は？", class: "label mt-4" %>
+                <%= f.text_field :before_address, class: "form-control" ,placeholder:"東京"%>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :current_address, "・現在お住まいの都道府県は？", class: "label mt-4" %>
+                <%= f.text_field :current_address, class: "form-control" ,placeholder:"山梨県" %>
+              </div>
+              
+              <div class="form-group">
+                <%= f.label :trigger , "・移住のきっかけは？", class: "label mt-4" %>
+                <%= f.text_area :trigger, class: "form-control" ,placeholder:"4,000" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :preparation, "・移住する為にどんな準備をしましたか？", class: "label mt-4" %>
+                <%= f.text_area :preparation, class: "form-control", placeholder: "資金" %>
+              </div>
+
+              <%= f.submit '投稿', class: "btn btn-outline-primary btn-block mt-4" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</section>
