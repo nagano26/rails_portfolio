@@ -37,3 +37,10 @@ img {
   border-radius: 200%;
 }
 
+.p-top {
+  min-width: 960px;
+  &__title {
+    text-align: center;
+    font-size: 16px;
+  }
+}

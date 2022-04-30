@@ -8,6 +8,10 @@ class User < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :normals, dependent: :destroy
+  has_many :works, dependent: :destroy
+  has_many :lifestyles, dependent: :destroy
+  has_many :blogs, dependent: :destroy
+
 
   def already_favorited?(room)
     self.favorites.exists?(room_id: room.id)

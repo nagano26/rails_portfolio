@@ -1,0 +1,45 @@
+<header class="bg-success py-2">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-white">
+      <h2 class="display-4 fw-bolder">あなたの移住体験談</h2>
+    </div>
+  </div>
+</header>
+
+<%= render "shared/error", obj: @lifestyle %>
+
+<section class="section mb-5">
+  <div class="container mt-5">
+  <br>
+    <h1>移住生活について教えて下さい</h1>
+  <br>    
+    <div class="row">
+      <div class="col-10">
+          <%= form_for @lifestyle do |f| %>
+              <div class="form-group">
+                <%= f.label :price_life, "・一ヶ月の生活費", class: "label mt-4" %>
+                <%= f.text_field :price_life, class: "form-control" ,placeholder:"東京"%>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :house_life, "・住まいはどのように探しましたか？", class: "label mt-4" %>
+                <%= f.text_area :house_life, class: "form-control" ,placeholder:"山梨県" %>
+              </div>
+              
+              <div class="form-group">
+                <%= f.label :dating_life , "・移住先の近所付き合い", class: "label mt-4" %>
+                <%= f.text_area :dating_life, class: "form-control" ,placeholder:"4,000" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :system_life, "・国の制度など", class: "label mt-4" %>
+                <%= f.text_area :system_life, class: "form-control", placeholder: "資金" %>
+              </div>
+
+              <%= f.submit '投稿', class: "btn btn-outline-primary  mt-4 mr-5" %>
+              <%= link_to '前のページに戻る', subhome_index_path ,class: "btn btn-primary mt-4"%>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</section>

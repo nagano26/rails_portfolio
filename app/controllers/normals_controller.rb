@@ -1,6 +1,7 @@
 class NormalsController < ApplicationController
   def index
     @normals = Normal.all
+    @normals = Normal.all.reverse_order.page(params[:page]).per(10)
   end
   
   def new

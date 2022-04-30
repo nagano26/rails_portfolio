@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :blogs
+  resources :lifestyles
+  get 'subhome/index'
   resources :works
   resources :normals
   get 'search' => 'rooms#search'

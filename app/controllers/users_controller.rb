@@ -10,14 +10,14 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     if @user != current_user
-      redirect_to user_path, alert: "ちょっと何やってるんですか？"
+      redirect_to user_path, alert: "不正のアクセスです"
     end
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: "プロフィールの更新したよー！！"
+      redirect_to user_path(@user), notice: "プロフィールの更新しました"
     else
       render :edit, status: :unprocessable_entity
     end

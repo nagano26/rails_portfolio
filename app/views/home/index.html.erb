@@ -18,11 +18,13 @@
             <div class="row gx-5 align-items-center justify-content-center">
                 <div class="col-lg-8 col-xl-7 col-xxl-6">
                     <div class="my-5 text-center text-xl-start">
-                        <h1 class="display-5 fw-bolder text-white mb-2">移住情報掲示板</h1>
-                        <p class="lead fw-normal text-white-50 mb-4">このサイトは、これから移住する人、将来的に移住したいと考えている人に向けて情報発信、応援しています。</p>
+                        <h1 class="display-5 fw-bolder text-white mb-2">移住home</h1>
+                        <p class="lead fw-normal text-white-50 mb-4">引っ越しや転勤、事情によって住む場所を変える、
+                        誰しも新しい環境に対して期待と不安を抱いているものです。このサイトでは皆様が住む地域の情報を多くの方に共有して頂き、
+                        "移住"に対する不安を払拭し、”移住”をもっと身近な存在に感じてもらいたいと思っております。是非、あなたの地域について教えて下さい！！</p>
                         <div class="">
                             <%= link_to "宿を探してみる", rooms_path, class: "btn btn-primary btn-lg px-4 me-sm-3 mr-4 " %>
-                            <%= link_to "移住者の声を聞く", normals_path, class: "btn btn-outline-light btn-lg px-4" %>
+                            <%= link_to "移住者の声を聞く", subhome_index_path, class: "btn btn-outline-light btn-lg px-4" %>
                         </div>
                     </div>
                 </div>
@@ -83,16 +85,16 @@
                     <p class="mt-5">移住に置いて、実際の生活感を知るということは非常に大事なことです。</br>移住後のミスマッチを防ぐ為にも、週末を利用して実際に移住先の生活を体験してみましょう。</p>
                 </div>
                 <div class="card shadow p-5  mx-auto mt-5 col-10">
-                <h3 class="form-area-title">・地域検索</h3>
-                <p class="mt-4">・注意</p>
-                <p>場所によってはホテルなどの施設がない場合があります。<br>こちらのサービスは、個人が宿を提供できる仕様</p>
-                <p>
-                    <%= form_with url: search_path, method: :get, local: true do |f| %>
-                        <%= f.text_field :area, value: @area, class: "form-control", :placeholder => "東京" %>
-                        <%= f.submit "検索" %>
-                    <% end %>
-                </p>
-            </div>
+                    <h3 class="form-area-title">・地域検索</h3>
+                    <p class="mt-4">・注意</p>
+                    <p>場所によってはホテルなどの施設がない場合があります。<br>こちらのサービスは、個人が宿を提供できる仕様</p>
+                    <p>
+                        <%= form_with url: search_path, method: :get, local: true do |f| %>
+                            <%= f.text_field :area, value: @area, class: "form-control", :placeholder => "東京" %>
+                            <%= f.submit "検索" %>
+                        <% end %>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -106,7 +108,7 @@
                         <p class="lead fw-normal text-muted mb-5 text-white-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque fugit ratione dicta mollitia. Officiis ad.</p>
                     </div>
                     <div class="text-center">
-                        <%= link_to "移住者の声を聞く", normals_path, class: "btn btn-outline-light btn-lg px-4" %>
+                        <%= link_to "移住者の声を聞く", subhome_index_path, class: "btn btn-outline-light btn-lg px-4" %>
                     </div>
                 </div>
             </div>

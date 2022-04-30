@@ -1,2 +1,46 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<header class="bg-success py-2">
+  <div class="container px-4 px-lg-5 my-5">
+      <div class="text-white">
+          <h2 class="display-4 fw-bolder">みんなの移住体験談</h2>
+      </div>
+  </div>
+</header>
+
+<div class="py-2 bg-light">
+    <div class="container px-2 my-5">
+        <div class="row gx-5">
+            <div class="card shadow p-5  mx-auto mt-5 col-10">
+                <table class="table mt-5">
+                    <h2 class="form-area-title"><%=@work.user.username %>さんの体験談</h2>
+                    <tr><th>・移住前のお仕事は？</th></tr>
+                    <tr><td><%= @work.before_work %></td></tr>
+                    <tr><th>・移住後のお仕事は？</th></tr>
+                    <tr><td><%= @work.current_work %></td></tr>
+                    <tr><th>・移住先の主なお仕事は？</th></tr>
+                    <tr><td><%= @work.others_work %></td></tr>
+                    <tr><th>・仕事探しについてのアドバイス</th></tr>
+                    <tr><td><%= @work.message_work %></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+            <%= attachment_image_tag @work.user, :profile_image , fallback: "no-image.png" ,:size =>'300x400'%>
+            </div>
+            <div class="col-md-8">
+                <h3>投稿者：<%=@work.user.username %>さん</h3>
+            <p class="mt-4"><%= @work.user.profile %></p>
+            <% if user_signed_in? %>
+                <%= link_to "投稿者情報を確認", user_path(@work.user),class: "btn btn-outline-primary mb-3" %>
+            <% else %>
+                <%= link_to 'ログインして投稿者を確認する', new_user_session_path ,class: "btn btn-outline-primary mb-3" %>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</section>

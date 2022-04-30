@@ -1,20 +1,24 @@
-<nav class="navbar navbar-light navbar-dark bg-dark">
-    <a class="navbar-brand">移住について教えて</a>
-</nav>
+<header class="bg-success py-2">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-white">
+      <h2 class="display-4 fw-bolder">あなたの移住体験談</h2>
+    </div>
+  </div>
+</header>
 
 <%= render "shared/error", obj: @normal %>
 
-<section class="section">
+<section class="section mb-5">
   <div class="container mt-5">
   <br>
-    <h1>フォーム一覧</h1>
+    <h1>あなたの体験を教えて下さい</h1>
   <br>    
     <div class="row">
       <div class="col-10">
           <%= form_for @normal do |f| %>
               <div class="form-group">
                 <%= f.label :before_address, "・以前お住まいの都道府県は？", class: "label mt-4" %>
-                <%= f.text_field :before_address, class: "form-control" ,placeholder:"東京"%>
+                <%= f.text_field :before_address, class: "form-control" ,placeholder:"東京都"%>
               </div>
 
               <div class="form-group">
@@ -24,15 +28,16 @@
               
               <div class="form-group">
                 <%= f.label :trigger , "・移住のきっかけは？", class: "label mt-4" %>
-                <%= f.text_area :trigger, class: "form-control" ,placeholder:"4,000" %>
+                <%= f.text_area :trigger, class: "form-control" ,placeholder:"子供ができ、都会より自然の多い場所の方が、子供にとって良い環境ではないかと思い、移住について意識し始めました。" %>
               </div>
 
               <div class="form-group">
                 <%= f.label :preparation, "・移住する為にどんな準備をしましたか？", class: "label mt-4" %>
-                <%= f.text_area :preparation, class: "form-control", placeholder: "資金" %>
+                <%= f.text_area :preparation, class: "form-control", placeholder: "都内にある移住支援センターに妻と一緒に足を運びました。" %>
               </div>
 
-              <%= f.submit '投稿', class: "btn btn-outline-primary btn-block mt-4" %>
+              <%= f.submit '投稿', class: "btn btn-outline-primary  mt-4 mr-5" %>
+              <%= link_to '前のページに戻る', subhome_index_path ,class: "btn btn-primary mt-4"%>
           <% end %>
       </div>
     </div>

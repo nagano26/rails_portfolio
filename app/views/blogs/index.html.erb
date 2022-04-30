@@ -1,0 +1,35 @@
+<header class="bg-success py-3">
+  <div class="container px-4 px-lg-5 my-5">
+      <div class="text-center text-white">
+          <h1 class="display-4 fw-bolder">みんなの移住体験談</h1>
+          <p class="lead fw-normal text-white-50 mb-0 mt-5">あなたの体験談を教えて下さい</p>
+          <% if user_signed_in? %>
+            <%= link_to "投稿する", new_blog_path(@blog), class: "btn btn-warning mt-3" %>
+          <% else %>
+            <%= link_to 'ログイン', new_user_session_path ,class: "btn btn-warning" %>
+          <% end %>
+      </div>
+  </div>
+</header>
+
+<section class="section">
+    <div class="container mt-5">
+        <% @blogs.each do |blog| %>
+            <table class="table table-striped table-bordered ">
+                <tr>
+                <th>タイトル</th>
+                <th>写真</th>
+                <th>ブログ</th>
+                <th>投稿時間</th>
+                </tr>
+                <tr>
+                <td><%= blog.title_blog %></td>
+                <td><%= attachment_image_tag blog, :blog_image %></td>
+                <td><%= blog.body_blog %></td>
+                <td><%= blog.created_at.to_s(:datetime_jp) %></td>
+                </tr>
+            </table>
+        <% end %>
+    </div>
+</section>
+

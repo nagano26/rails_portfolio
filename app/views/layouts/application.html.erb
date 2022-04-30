@@ -28,66 +28,55 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <%= link_to '移住home', root_path, class: "navbar-brand" %>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-      
-      <div class="navbar-item mr-3">
-        <%= form_with url: search_path, method: :get, local: true do |f| %>
-        <%= f.text_field :area, value: @area, :placeholder => "エリア" %>
-        <% end %>
-      </div>
-      
-      <div class="navbar-item mr-3">
-        <%= form_with url: search_path, method: :get, local: true do |f| %>
-        <%= f.text_field :keyword, value: @keyword, :placeholder => "キーワード" %>
-        <% end %>
-      </div>
-      
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
       <% if user_signed_in? %>
       <div class="collapse navbar-collapse" id="Navber">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to "お部屋の登録", new_room_path ,class: "navbar-item button is-warning is-light" %>
+            <%= link_to "予約できる宿一覧", rooms_path ,class: "navbar-item nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "みんなの投稿", rooms_path ,class: "navbar-item button is-warning is-light" %>
+            <%= link_to "みんな移住体験談", subhome_index_path, class: "navbar-item nav-link"%>
           </li>
           <li class="nav-item">
-            <%= link_to "予約部屋履歴", reservations_path(current_user) ,class: "navbar-item button is-warning is-light"%>
-          </li>
-          <div class="navbar-item">
-            <%= link_to "マイページ", users_path(current_user) ,class: "navbar-item button is-warning is-light"%>
-          </div>
-          <li class="nav-item">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "navbar-item button is-warning is-light"%>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "navbar-item nav-link"%>
           </li>
         </ul>
-        <div class="dropdown">
+        <div class="dropdown mr-3">
           <button type="button" id="dropdown1"
             class="btn btn-secondary dropdown-toggle"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false">
-            Dropdown button
+            <%= current_user.username %>さん
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdown1">
-            <a class="dropdown-item" href="#">Menu #1</a>
-            <a class="dropdown-item" href="#">Menu #2</a>
-            <a class="dropdown-item" href="#">Menu #3</a>
+            <%= link_to "マイページ", users_path(current_user), class: "dropdown-item" %>
+            <%= link_to "移住体験を登録", new_normal_path, class: "dropdown-item" %>
+            <%= link_to "お部屋を登録", new_room_path(current_user), class: "dropdown-item" %>
+            <%= link_to "お部屋予約", reservations_path(current_user), class: "dropdown-item" %>
           </div>
         </div>
+      </div>
       <% else %>
-        <div class="navbar-item">
-          <%= link_to "みんなの投稿一覧", rooms_path ,class: "navbar-item button is-warning is-light" %>
-        </div>
-        <div class="navbar-item">
-          <%= link_to 'ログイン', new_user_session_path ,class: "navbar-item button is-warning is-light"%>
-        </div>
-        <div class="navbar-item">
-          <%= link_to '登録する', new_user_registration_path ,class: "navbar-item button is-warning is-light"%>
-        </div>
+      <div class="collapse navbar-collapse" id="Navber">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "予約できる宿一覧", rooms_path ,class: "navbar-item nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "みんな移住体験談", subhome_index_path, class: "navbar-item nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ログイン', new_user_session_path ,class: "navbar-item nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to '登録する', new_user_registration_path ,class: "navbar-item nav-link"%>
+          </li>
+        </ul>
       <% end %>
       </div>
     </div>

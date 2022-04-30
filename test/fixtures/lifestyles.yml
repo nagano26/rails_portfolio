@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  price_life: 1
+  house_life: MyText
+  dating_life: MyText
+  system_life: MyText
+
+two:
+  user_id: 1
+  price_life: 1
+  house_life: MyText
+  dating_life: MyText
+  system_life: MyText

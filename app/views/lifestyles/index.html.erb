@@ -4,7 +4,7 @@
           <h1 class="display-4 fw-bolder">みんなの移住体験談</h1>
           <p class="lead fw-normal text-white-50 mb-0 mt-5">あなたの体験談を教えて下さい</p>
           <% if user_signed_in? %>
-            <%= link_to "投稿する", new_work_path(@work), class: "btn btn-warning mt-3" %>
+            <%= link_to "投稿する", new_lifestyle_path(@lifestyle), class: "btn btn-warning mt-3" %>
           <% else %>
             <%= link_to 'ログイン', new_user_session_path ,class: "btn btn-warning" %>
           <% end %>
@@ -14,27 +14,23 @@
 
 <section class="section">
   <div class="container mt-5">
-    <% @works.each do |work| %>
+    <% @lifestyles.each do |lifestyle| %>
     <table class="table table-striped table-bordered">
       <caption>"ユーザ情報を確認する"</caption>
       <tr>
       <th>ユーザー名</th>
-      <th>移住前のお仕事は？</th>
-      <th>移住後のお仕事は？</th>
-      <th>移住先の主なお仕事</th>
-      <th>お仕事探しについてのアドバイス</th>
+      <th>移住先の一ヶ月の生活費</th>
+      <th>利用した国の制度</th>
       <th>投稿時間</th>
       </tr>
       <tr>
-      <td><%= work.user.username %></td>
-      <td><%= work.before_work %></td>
-      <td><%= work.current_work %></td>
-      <td><%= work.others_work %></td>
-      <td><%= link_to "仕事についてのアドバイスを見てみる", work_path(work) %></td>
-      <td><%= work.created_at.to_s(:datetime_jp) %></td>
+      <td><%= lifestyle.user.username %></td>
+      <td><%= lifestyle.price_life %></td>
+      <td><%= link_to "体験談を詳しく見る", lifestyle_path(lifestyle) %></td>
+      <td><%= lifestyle.created_at.to_s(:datetime_jp) %></td>
       </tr>
     <% end %>
     </table>
   </div>
-  <%=paginate @works, theme: 'twitter-bootstrap-4' %>
+  <%=paginate @lifestyles, theme: 'twitter-bootstrap-4' %>
 </section>
