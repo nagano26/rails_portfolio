@@ -1,7 +1,7 @@
 class LifestylesController < ApplicationController
   def index
     @lifestyles = Lifestyle.all
-    @lifestyles = Lifestyle.all.reverse_order.page(params[:page]).per(10)
+    @lifestyles = Lifestyle.all.reverse_order.page(params[:page]).per(5)
   end
 
   def show

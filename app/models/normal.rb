@@ -1,5 +1,6 @@
 class Normal < ApplicationRecord
     belongs_to :user
+    has_many :comments, dependent: :destroy
 
     with_options presence: true do
         validates :before_address

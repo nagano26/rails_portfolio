@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
   def create
     @room = current_user.rooms.build(room_params)
     if @room.save
-      redirect_to room_path(@room), notice: "お部屋の投稿したよー！！"
+      redirect_to room_path(@room), notice: "お部屋の投稿ありがとうございます！"
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,14 +25,14 @@ class RoomsController < ApplicationController
   def edit
     @room = Room.find(params[:id])
     if @room.user != current_user
-      redirect_to room_path, alert: "ちょっと何やってるんですか？不正です！！"
+      redirect_to room_path, alert: "不正なアクセスです！！"
     end
   end
 
   def update
     @room = Room.find(params[:id])
     if @room.update(room_params)
-      redirect_to room_path(@room), notice: "お部屋の更新したよー！！"
+      redirect_to room_path(@room), notice: "お部屋の更新致しました！！"
     else
       render :edit, status: :unprocessable_entity
     end

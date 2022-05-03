@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :lifestyles
   get 'subhome/index'
   resources :works
-  resources :normals
+  resources :normals do
+    resources :comments, only: [:create, :destroy]
+  end
   get 'search' => 'rooms#search'
   devise_for :users
 

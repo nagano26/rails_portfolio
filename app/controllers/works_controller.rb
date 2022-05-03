@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
-    @works = Work.all.reverse_order.page(params[:page]).per(10)
+    @works = Work.all.reverse_order.page(params[:page]).per(5)
   end
 
   def show
@@ -22,6 +22,12 @@ class WorksController < ApplicationController
   end
   
   def edit
+  end
+
+  def destroy
+    @work = Work.find(params[:id])
+    @work.destroy
+    redirect_to work_path(@work), notice: "削除致しました！！"
   end
 
   private
