@@ -1,0 +1,2 @@
+class CommentWork < ApplicationRecord
+end
