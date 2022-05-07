@@ -6,6 +6,14 @@
   <div class="container mt-5 mb-5">
   <h2 class="title mb-5">お部屋の予約済み一覧</h2>
     <div class="row">
+    <div class="count col-12 mb-3">現在の予約済み宿数：<%= @user.reservations.count %></div> 
+      <% if @user.id == current_user.id %>
+        <% if @user.reservations.count == 0 %>
+          <div class="btn-group col-12">
+            <%= link_to "宿一覧を見る", rooms_path, class: "btn btn-outline-primary mb-3 mr-3" %>
+          </div>
+        <% end %>
+      <% end %>
       <div class="col-12">
         <% @user.reservations.each do |reservation| %>
         <table class="table table-bordered table-striped mb-5">
@@ -52,7 +60,24 @@
           <tr>
             <% if reservation.user_id == current_user.id %>
               <th>キャンセルする</th>
-              <td><%= button_to "削除", reservation , method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+              <td><button type="button" class="btn btn-primary mb-12" data-toggle="modal" data-target="#testModal<%= reservation.id %>">キャンセル</button></td>
+              <!-- ボタン・リンククリック後に表示される画面の内容 -->
+              <div class="modal fade" id="testModal<%= reservation.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4>削除確認画面</h4>
+                    </div>
+                    <div class="modal-body">
+                      <label>データを削除しますか？</label>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                      <%= button_to "削除", reservation , method: :delete, class: "btn btn-outline-primary"%>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <% end %>
           </tr>
         </table>

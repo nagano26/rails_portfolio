@@ -17,9 +17,9 @@
                     <tr><th>・移住前のお住まい</th></tr>
                     <tr><td><%= @normal.current_address %></td></tr>
                     <tr><th>・移住までの経緯</th></tr>
-                    <tr><td><%= @normal.trigger %></td></tr>
+                    <tr><td><%= simple_format @normal.trigger %></td></tr>
                     <tr><th>・移住までの準備</th></tr>
-                    <tr><td><%= @normal.preparation%></td></tr>
+                    <tr><td><%= simple_format @normal.preparation%></td></tr>
                 </table>
             </div>
         </div>

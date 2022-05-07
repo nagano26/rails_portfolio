@@ -48,10 +48,6 @@
             <th>予約確定日時</th>
             <td><%= @reservation.created_at.to_fs(:stamp) %></td>
           </tr>
-          <tr>
-            <th>キャンセルする</th>
-            <td><%= button_to "削除", @reservation , method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
-          </tr>
         </table>
       </div>
     </div>

@@ -15,11 +15,11 @@
                     <tr><th>・移住先の一ヶ月の生活費</th></tr>
                     <tr><td><%= @lifestyle.price_life %></td></tr>
                     <tr><th>・住まいの探し方</th></tr>
-                    <tr><td><%= @lifestyle.house_life %></td></tr>
+                    <tr><td><%= simple_format @lifestyle.house_life %></td></tr>
                     <tr><th>・移住先の近所付き合いについて</th></tr>
-                    <tr><td><%= @lifestyle.dating_life %></td></tr>
+                    <tr><td><%= simple_format @lifestyle.dating_life %></td></tr>
                     <tr><th>・移住の際に利用した制度について</th></tr>
-                    <tr><td><%= @lifestyle.system_life %></td></tr>
+                    <tr><td><%= simple_format @lifestyle.system_life %></td></tr>
                 </table>
             </div>
         </div>

@@ -17,7 +17,7 @@ class WorksController < ApplicationController
   def create
     @work = current_user.works.build(work_params)
     if @work.save
-      redirect_to works_path
+      redirect_to works_path, notice: "移住体験、投稿致しました！！"
     else
       render :new, status: :unprocessable_entity
     end

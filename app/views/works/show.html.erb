@@ -17,9 +17,9 @@
                     <tr><th>・移住後のお仕事は？</th></tr>
                     <tr><td><%= @work.current_work %></td></tr>
                     <tr><th>・移住先の主なお仕事は？</th></tr>
-                    <tr><td><%= @work.others_work %></td></tr>
+                    <tr><td><%= simple_format @work.others_work %></td></tr>
                     <tr><th>・仕事探しについてのアドバイス</th></tr>
-                    <tr><td><%= @work.message_work %></td></tr>
+                    <tr><td><%= simple_format @work.message_work %></td></tr>
                 </table>
             </div>
         </div>

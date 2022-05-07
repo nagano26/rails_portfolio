@@ -44,14 +44,31 @@
           <tr><th>・移住後の都道府県</th></tr>
           <tr><td><%= normal.current_address %></td></tr>
           <tr><th>・移住のきっかけ</th></tr>
-          <tr><td><%= normal.trigger %></td></tr>
+          <tr><td><%= simple_format normal.trigger %></td></tr>
           <tr><th>・移住する為にどんな準備をしましたか？</th></tr>
-          <tr><td><%= normal.preparation %></td></tr>
+          <tr><td><%= simple_format normal.preparation %></td></tr>
         </table>
           <% if @user.id == current_user.id %>
             <div class="btn-group">
               <%= link_to "内容の編集", edit_normal_path(normal), class: "btn btn-outline-primary mb-3 mr-3" %>
-              <%= button_to "削除", normal_path(normal), method: :delete, class: "btn btn-outline-primary" %>
+              <button type="button" class="btn btn-outline-primary mb-3" data-toggle="modal" data-target="#testModal<%= normal.id %>">削除する</button>
+              <!-- ボタン・リンククリック後に表示される画面の内容 -->
+              <div class="modal fade" id="testModal<%= normal.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4>削除確認画面</h4>
+                    </div>
+                    <div class="modal-body">
+                      <label>データを削除しますか？</label>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                      <%= button_to "削除", normal_path(normal), method: :delete, class: "btn btn-outline-primary" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           <% end %>
         <% end %>
@@ -80,14 +97,31 @@
           <tr><th>・移住後のお仕事</th></tr>
           <tr><td><%= work. current_work %></td></tr>
           <tr><th>・移住先の主なお仕事</th></tr>
-          <tr><td><%= work.others_work %></td></tr>
+          <tr><td><%= simple_format work.others_work %></td></tr>
           <tr><th>・仕事について</th></tr>
-          <tr><td><%= work.message_work %></td></tr>
+          <tr><td><%= simple_format work.message_work %></td></tr>
         </table>
           <% if @user.id == current_user.id %>
             <div class="btn-group">
               <%= link_to "内容の編集", edit_work_path(work), class: "btn btn-outline-primary mb-3 mr-3" %>
-              <%= button_to "削除", work_path(work), method: :delete, class: "btn btn-outline-primary" %>
+              <button type="button" class="btn btn-outline-primary mb-3" data-toggle="modal" data-target="#testModal<%= work.id %>">削除する</button>
+              <!-- ボタン・リンククリック後に表示される画面の内容 -->
+              <div class="modal fade" id="testModal<%= work.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4>削除確認画面</h4>
+                    </div>
+                    <div class="modal-body">
+                      <label>データを削除しますか？</label>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                      <%= button_to "削除", work_path(work), method: :delete, class: "btn btn-outline-primary" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           <% end %>
         <% end %>
@@ -114,16 +148,33 @@
           <tr><th>・移住先の一ヶ月の生活費</th></tr>
           <tr><td><%= lifestyle.price_life %></td></tr>
           <tr><th>・どうやって住まいを探したか</th></tr>
-          <tr><td><%= lifestyle.house_life %></td></tr>
+          <tr><td><%= simple_format lifestyle.house_life %></td></tr>
           <tr><th>・近所付き合いについて</th></tr>
-          <tr><td><%= lifestyle.dating_life %></td></tr>
+          <tr><td><%= simple_format lifestyle.dating_life %></td></tr>
           <tr><th>・利用した国や自治体の制度について</th></tr>
-          <tr><td><%= lifestyle.system_life %></td></tr>
+          <tr><td><%= simple_format lifestyle.system_life %></td></tr>
         </table>
           <% if @user.id == current_user.id %>
             <div class="btn-group">
               <%= link_to "内容の編集", edit_lifestyle_path(lifestyle), class: "btn btn-outline-primary mb-3 mr-3" %>
-              <%= button_to "削除", lifestyle_path(lifestyle), method: :delete, class: "btn btn-outline-primary" %>
+              <button type="button" class="btn btn-outline-primary mb-3" data-toggle="modal" data-target="#testModal<%= lifestyle.id %>">削除する</button>
+              <!-- ボタン・リンククリック後に表示される画面の内容 -->
+              <div class="modal fade" id="testModal<%= lifestyle.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4>削除確認画面</h4>
+                    </div>
+                    <div class="modal-body">
+                      <label>データを削除しますか？</label>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                      <%= button_to "削除", lifestyle_path(lifestyle), method: :delete, class: "btn btn-outline-primary" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           <% end %>
         <% end %>
@@ -172,9 +223,24 @@
                       <% end %>
                     </div>
                     <div class="mt-3">
-                      <%= button_to room_path(room), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block ml-2" do %>
-                        このレシピを削除する
-                      <% end %>
+                      <button type="button" class="btn btn-outline-primary mb-3" data-toggle="modal" data-target="#testModal<%= room.id %>">削除する</button>
+                      <!-- ボタン・リンククリック後に表示される画面の内容 -->
+                      <div class="modal fade" id="testModal<%= room.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4>削除確認画面</h4>
+                            </div>
+                            <div class="modal-body">
+                              <label>データを削除しますか？</label>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                              <%= button_to "削除", room_path(room), method: :delete, class: "btn btn-outline-primary" %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   <% end %>
                 </div>

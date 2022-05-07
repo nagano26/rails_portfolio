@@ -2,7 +2,7 @@
     <% unless comment.id.nil? %>
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
-                <%= comment.content %>
+                <%= simple_format comment.content %>
                 <% if comment.user == current_user %>
                     <div class="mt-3">
                         <%= button_to normal_comment_path(comment.normal_id, comment.id), method: :delete, remote: true, class: "comment_destroy mt-3" do %>

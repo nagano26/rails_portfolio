@@ -1,6 +1,7 @@
 <nav class="navbar navbar-light navbar-dark bg-dark">
     <a class="navbar-brand">お部屋ページ</a>
 </nav>
+
 <section class="section">
   <div class="container mt-5">
     <div class="row">
@@ -17,7 +18,7 @@
               </div>
             </div>
             <div class="content">
-              <table class="table is-narrow">
+              <table class="table table-striped is-narrow">
                 <tr><th>お部屋紹介</th></tr>
                 <tr><td><%= simple_format @room.room_body %></td></tr>
                 <tr><td>住所：<%=@room.address %></td></tr>
@@ -32,12 +33,13 @@
             </div>
           </div>
         </div>
-      <div class="card ml-5" style="width:18rem;">
+      
+      <div class="card ml-5 mb-5" style="width:18rem;">
         <h2 class="card-header" style="background-color:#e3f2fd;">お部屋の予約</h2>
         <div class="card-body">
           <article class="panel is-link">
             <h3 class="panel-heading mb-4">
-              ￥<%= @room.room_price %>/日
+              ￥<%= @room.room_price %>/日(宿泊料)
             </h3>
             <div class="panel-block">
               <%= render "reservations/new" %>  
