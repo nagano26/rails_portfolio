@@ -7,9 +7,9 @@
 <section class="section">
   <div class="container mt-5">
   <br>
-    <h1>編集画面</h1>
+    <h1>プロフィール編集画面</h1>
   </br>
-    <div class="row">
+    <div class="row mb-5">
       <div class="col-10">
         <%= form_for @user do |f| %>
           <div class="form-group">
@@ -24,15 +24,15 @@
           
           <div class="form-group">
             <%= f.label :profile, "・自己紹介文", class: "label" %>
-            <%= f.text_area :profile, class: "form-control" ,placeholder:"こんにちは" %>
+            <%= f.text_area :profile, :rows => "5", class: "form-control" ,placeholder:"こんにちは" %>
           </div>
           
           <div class="form-group">
-          <%= f.label :profile_image, "・プロフィール画像", class: "label" %>
-          <%= f.attachment_field :profile_image, class: "form-control-file" %>
+            <%= f.label :profile_image, "・プロフィール画像", class: "label" %>
+            <%= f.attachment_field :profile_image, class: "form-control-file" %>
           </div>
           
-          <%= f.submit '更新', class: "button is-success" %>
+          <%= f.submit '更新', class: "button is-success",class: "btn btn-primary mt-4" %>
         <% end %>
       </div>
     </div>

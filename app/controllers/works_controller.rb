@@ -6,6 +6,8 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+    @comment = CommentWork.new
+    @comments = @work.comment_works.order(created_at: :desc)
   end
   
   def new
@@ -22,6 +24,19 @@ class WorksController < ApplicationController
   end
   
   def edit
+    @work = Work.find(params[:id])
+    if @work.user != current_user
+      redirect_to work_path, alert: "不正なアクセスです！！"
+    end
+  end
+
+  def update
+    @work = Work.find(params[:id])
+    if @work.update(work_params)
+      redirect_to work_path(@work), notice: "移住体験、更新致しました！！"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

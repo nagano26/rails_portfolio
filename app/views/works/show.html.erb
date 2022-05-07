@@ -44,3 +44,26 @@
         </div>
     </div>
 </section>
+
+<section>
+    <div class="container px-2 my-5">
+        <div class="row">
+            <% if user_signed_in? %>
+                <div class="comment col-md-4">
+                    <h3>コメントする</h3>
+                    <%= render partial: 'comments/form_work', locals: { comment: @comment, work: @work } %>
+                </div>
+            <% end %>
+            <div class="comment col-md-4 mb-3">
+                <%= @comments.count %>件コメント
+                <div>
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        コメントを見る
+                    </a>
+                </div>
+                <%= render partial: 'comments/index_work', locals: { comments: @comments } %>
+            </div>
+        </div>
+    </div>
+</section>
+

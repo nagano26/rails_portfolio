@@ -5,17 +5,17 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @reservation = Reservation.all
+    @user = current_user
   end
 
   def show
-    @reservation = Reservation.all
+    @reservation = Reservation.find(params[:id])
   end
 
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
-      redirect_to reservation_path(@reservation), notice: "お部屋の予約したよー！！"
+      redirect_to reservation_path(@reservation), notice: "お部屋の予約致しました！！"
     else
       @room = Room.find(@reservation.room_id)
       render 'rooms/show', status: :unprocessable_entity
@@ -25,7 +25,7 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
-    redirect_to reservation_path, notice: "お部屋の予約やめたよー！！"
+    redirect_to reservation_path, notice: "お部屋のキャンセル致しました！！"
   end
 
   private

@@ -2,12 +2,12 @@
   <a class="navbar-brand">お住まいの登録 </a>
 </nav>
 
-<section class="section">
+<section class="section mb-3">
   <div class="container mt-5">
     <h1 class="title">プロフィール</h1>
     <div class="row">
       <div class="col-12">
-        <table class="table">
+        <table class="table table-striped">
           <tr><%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class: "profile_image mb-4" %></tr>
           <tr><th>・ユーザー名</th></tr>
           <tr><td><%= @user.username %></td></tr>
@@ -16,22 +16,133 @@
           <tr><th>・紹介文</th></tr>
           <tr><td><%= simple_format @user.profile %></td></tr>
         </table>
+        <% if @user.id == current_user.id %>
+          <%= link_to '編集', edit_user_path(@user), class: "btn btn-outline-primary mb-3"%>
+        <% end %>    
       </div>
-      <%= link_to '編集', edit_user_path(@user), class: "btn btn-outline-primary mb-3"%>
     </div>
   </div>
 </section>
 
 <section>
-  <% @user.normals.each do |normal| %>
-    <%= normal. before_address  %>
-  <% end %>
-  <%= link_to "あなたの移住のきっかけを登録する", new_normal_path %>
+  <div class="container mb-3">
+    <h1 class="title mb-3 bg-success text-white">移住体験</h1>
+    <div class="row">
+      <div class="count col-12 mb-3">現在の投稿数：<%= @user.normals.count %></div> 
+      <% if @user.id == current_user.id %>
+        <% if @user.normals.count == 0 %>
+          <div class="btn-group col-12">
+            <%= link_to "新規登録する", new_normal_path(@normal), class: "btn btn-outline-primary mb-3 mr-3" %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="col-12">
+        <% @user.normals.each do |normal| %>
+        <table class="table table-striped table-bordered mb-3">
+          <tr><th>・移住前の都道府県</th></tr>
+          <tr><td><%= normal.before_address %></td></tr>
+          <tr><th>・移住後の都道府県</th></tr>
+          <tr><td><%= normal.current_address %></td></tr>
+          <tr><th>・移住のきっかけ</th></tr>
+          <tr><td><%= normal.trigger %></td></tr>
+          <tr><th>・移住する為にどんな準備をしましたか？</th></tr>
+          <tr><td><%= normal.preparation %></td></tr>
+        </table>
+          <% if @user.id == current_user.id %>
+            <div class="btn-group">
+              <%= link_to "内容の編集", edit_normal_path(normal), class: "btn btn-outline-primary mb-3 mr-3" %>
+              <%= button_to "削除", normal_path(normal), method: :delete, class: "btn btn-outline-primary" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </section>
+
+<section>
+  <div class="container mb-3">
+    <h1 class="title bg-success mb-3 text-white">移住先のお仕事</h1>
+    <div class="row">
+      <div class="count col-12 mb-3">現在の投稿数：<%= @user.works.count %></div> 
+      <% if @user.id == current_user.id %>
+        <% if @user.works.count == 0 %>
+          <div class="btn-group col-12">
+            <%= link_to "新規登録する", new_work_path(@work), class: "btn btn-outline-primary mb-3 mr-3" %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="col-12">
+        <% @user.works.each do |work| %>
+        <table class="table table-striped table-bordered mb-3">
+          <tr><th>・移住前のお仕事</th></tr>
+          <tr><td><%= work.before_work %></td></tr>
+          <tr><th>・移住後のお仕事</th></tr>
+          <tr><td><%= work. current_work %></td></tr>
+          <tr><th>・移住先の主なお仕事</th></tr>
+          <tr><td><%= work.others_work %></td></tr>
+          <tr><th>・仕事について</th></tr>
+          <tr><td><%= work.message_work %></td></tr>
+        </table>
+          <% if @user.id == current_user.id %>
+            <div class="btn-group">
+              <%= link_to "内容の編集", edit_work_path(work), class: "btn btn-outline-primary mb-3 mr-3" %>
+              <%= button_to "削除", work_path(work), method: :delete, class: "btn btn-outline-primary" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h1 class="title bg-success mb-3 text-white">移住先の生活</h1>
+    <div class="row">
+      <div class="count col-12 mb-3">現在の投稿数：<%= @user.lifestyles.count %></div> 
+      <% if @user.id == current_user.id %>
+        <% if @user.lifestyles.count == 0 %>
+          <div class="btn-group col-12">
+            <%= link_to "新規登録する", new_lifestyle_path(@lifestyle), class: "btn btn-outline-primary mb-3 mr-3" %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="col-12">
+        <% @user.lifestyles.each do |lifestyle| %>
+        <table class="table table-striped table-bordered mb-3">
+          <tr><th>・移住先の一ヶ月の生活費</th></tr>
+          <tr><td><%= lifestyle.price_life %></td></tr>
+          <tr><th>・どうやって住まいを探したか</th></tr>
+          <tr><td><%= lifestyle.house_life %></td></tr>
+          <tr><th>・近所付き合いについて</th></tr>
+          <tr><td><%= lifestyle.dating_life %></td></tr>
+          <tr><th>・利用した国や自治体の制度について</th></tr>
+          <tr><td><%= lifestyle.system_life %></td></tr>
+        </table>
+          <% if @user.id == current_user.id %>
+            <div class="btn-group">
+              <%= link_to "内容の編集", edit_lifestyle_path(lifestyle), class: "btn btn-outline-primary mb-3 mr-3" %>
+              <%= button_to "削除", lifestyle_path(lifestyle), method: :delete, class: "btn btn-outline-primary" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section bg-light">
   <div class="container mt-4">
-    <h2 class="title">過去の投稿欄</h2>
-      <div class="count">現在のあなたの投稿数：<%= @user.rooms.count %></div> 
+    <h2 class="title">あなたのお部屋投稿一覧</h2>
+      <div class="count mb-3">現在の投稿数：<%= @user.rooms.count %></div>
+      <% if @user.id == current_user.id %>
+        <% if @user.rooms.count == 0 %>
+          <div class="btn-group col-12">
+            <%= link_to "新規登録する", new_room_path(@room), class: "btn btn-outline-primary mb-3 mr-3" %>
+          </div>
+        <% end %>
+      <% end %>
       <div class="row gx-4 gx-lg-5 row-cols-2 mb-5 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <% @user.rooms.each do |room| %>
           <div class="col mb-5">
@@ -74,4 +185,3 @@
       </div>
   </div>
 </section>
-

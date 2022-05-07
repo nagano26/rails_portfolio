@@ -16,28 +16,28 @@
     <div class="row">
       <div class="col-10">
           <%= form_for @normal do |f| %>
-              <div class="form-group">
-                <%= f.label :before_address, "・以前お住まいの都道府県は？", class: "label mt-4" %>
-                <%= f.text_field :before_address, class: "form-control" ,placeholder:"東京都"%>
-              </div>
+            <div class="form-group">
+              <%= f.label :current_address, "・以前お住まいの都道府県は？", class: "label mt-4" %>
+              <%= f.select :before_address, Ride.ride_areas.keys, {prompt: "選択してください"}, class: "form-control" %>
+            </div>
 
-              <div class="form-group">
-                <%= f.label :current_address, "・現在お住まいの都道府県は？", class: "label mt-4" %>
-                <%= f.text_field :current_address, class: "form-control" ,placeholder:"山梨県" %>
-              </div>
-              
-              <div class="form-group">
-                <%= f.label :trigger , "・移住のきっかけは？", class: "label mt-4" %>
-                <%= f.text_area :trigger, class: "form-control" ,placeholder:"子供ができ、都会より自然の多い場所の方が、子供にとって良い環境ではないかと思い、移住について意識し始めました。" %>
-              </div>
+            <div class="form-group">
+              <%= f.label :current_address, "・現在お住まいの都道府県は？", class: "label mt-4" %>
+              <%= f.select :current_address, Ride.ride_areas.keys, {prompt: "選択してください"}, class: "form-control" %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :trigger , "・移住のきっかけは？", class: "label mt-4" %>
+              <%= f.text_area :trigger, :rows => "5", class: "form-control" ,placeholder:"子供ができ、都会より自然の多い場所の方が、子供にとって良い環境ではないかと思い、移住について意識し始めました。" %>
+            </div>
 
-              <div class="form-group">
-                <%= f.label :preparation, "・移住する為にどんな準備をしましたか？", class: "label mt-4" %>
-                <%= f.text_area :preparation, class: "form-control", placeholder: "都内にある移住支援センターに妻と一緒に足を運びました。" %>
-              </div>
+            <div class="form-group">
+              <%= f.label :preparation, "・移住する為にどんな準備をしましたか？", class: "label mt-4" %>
+              <%= f.text_area :preparation, :rows => "5", class: "form-control", placeholder: "都内にある移住支援センターに妻と一緒に足を運びました。" %>
+            </div>
 
-              <%= f.submit '投稿', class: "btn btn-outline-primary  mt-4 mr-5" %>
-              <%= link_to '前のページに戻る', subhome_index_path ,class: "btn btn-primary mt-4"%>
+            <%= f.submit '投稿', class: "btn btn-outline-primary  mt-4 mr-5" %>
+            <%= link_to '前のページに戻る', subhome_index_path ,class: "btn btn-primary mt-4"%>
           <% end %>
       </div>
     </div>

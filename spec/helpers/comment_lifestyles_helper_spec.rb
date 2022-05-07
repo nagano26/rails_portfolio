@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
-# the CommentWorksHelper. For example:
+# the CommentLifestylesHelper. For example:
 #
-# describe CommentWorksHelper do
+# describe CommentLifestylesHelper do
 #   describe "string concat" do
 #     it "concats two strings with spaces" do
 #       expect(helper.concat_strings("this","that")).to eq("this that")
 #     end
 #   end
 # end
-RSpec.describe CommentWorksHelper, type: :helper do
+RSpec.describe CommentLifestylesHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"
 end

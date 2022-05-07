@@ -1,38 +1,38 @@
 <nav class="navbar navbar-light navbar-dark bg-dark">
-    <a class="navbar-brand">お住まいの登録 </a>
+  <a class="navbar-brand">移住体験登録</a>
 </nav>
 
 <%= render "shared/error", obj: @normal %>
 
-<section class="section">
+<section class="section mb-5">
   <div class="container mt-5">
   <br>
-    <h1>編集画面</h1>
+    <h1>移住体験の編集画面</h1>
   </br>
     <div class="row">
       <div class="col-10">
         <%= form_for @normal do |f| %>
           <div class="form-group">
-            <%= f.label :before_address, "・", class: "label" %>
-            <%= f.text_field :before_address, class: "form-control" ,placeholder:"鈴木　花子"%>
+            <%= f.label :before_address, "・以前お住まいの都道府県は？", class: "label mt-4" %>
+            <%= f.select :before_address, Ride.ride_areas.keys, {prompt: "選択してください"}, class: "form-control" %>
           </div>
           
           <div class="form-group">
-            <%= f.label :current_address, "・", class: "label" %>
-            <%= f.text_field :current_address, class: "form-control" ,placeholder:"email@email.co.jp" %>
+            <%= f.label :current_address, "・現在お住まいの都道府県は？", class: "label mt-4" %>
+            <%= f.select :current_address, Ride.ride_areas.keys, {prompt: "選択してください"}, class: "form-control" %>
           </div>
           
           <div class="form-group">
-            <%= f.label :trigger, "・", class: "label" %>
-            <%= f.text_area :trigger, class: "form-control" ,placeholder:"こんにちは" %>
+            <%= f.label :trigger, "・移住のきっかけは？", class: "label mt-4" %>
+            <%= f.text_area :trigger, :rows => "5", class: "form-control"%>
           </div>
           
           <div class="form-group">
-          <%= f.label :preparation, "・", class: "label" %>
-          <%= f.text_area :preparation, class: "form-control" %>
+            <%= f.label :preparation, "・移住する為にどんな準備をしましたか？", class: "label mt-4" %>
+            <%= f.text_area :preparation, :rows => "5", class: "form-control" %>
           </div>
           
-          <%= f.submit '更新', class: "button is-success" %>
+          <%= f.submit '更新',class: "btn btn-primary mt-4" %>
         <% end %>
       </div>
     </div>

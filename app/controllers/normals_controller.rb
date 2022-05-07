@@ -11,7 +11,7 @@ class NormalsController < ApplicationController
   def create
     @normal = current_user.normals.build(normal_params)
     if @normal.save
-      redirect_to normals_path
+      redirect_to normals_path, notice: "移住体験、新規投稿致しました！！"
     else
       render :new, status: :unprocessable_entity
     end

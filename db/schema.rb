@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_03_020428) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_06_094611) do
   create_table "blogs", force: :cascade do |t|
     t.integer "user_id"
     t.string "title_blog"
     t.text "body_blog"
     t.string "blog_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comment_lifestyles", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "lifestyle_id"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_03_020428) do
 
   create_table "lifestyles", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "price_life"
+    t.string "price_life"
     t.text "house_life"
     t.text "dating_life"
     t.text "system_life"
@@ -78,6 +86,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_03_020428) do
     t.integer "number_people"
     t.string "total_day"
     t.integer "total_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rides", force: :cascade do |t|
+    t.integer "ride_area"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

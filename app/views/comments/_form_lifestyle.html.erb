@@ -1,0 +1,4 @@
+<%= form_with(model: [lifestyle, comment], url: lifestyle_comment_lifestyles_path(@lifestyle) ) do |f| %>
+    <%= f.text_area :content, class: "form-control" %>
+    <%= f.submit "送信", class: "btn btn-outline-dark comment-submit float-right mt-3" %>
+<% end %>
