@@ -36,7 +36,9 @@
                 <h3>投稿者：<%= @lifestyle.user.username %>さん</h3>
             <p class="mt-4"><%= @lifestyle.user.profile %></p>
             <% if user_signed_in? %>
-                <%= link_to "投稿者情報を確認", user_path(@lifestyle.user),class: "btn btn-outline-primary mb-3" %>
+                <% if @lifestyle.user_id != current_user.id %>
+                    <%= link_to "投稿者情報を確認", user_path(@lifestyle.user),class: "btn btn-outline-primary mb-3" %>
+                <% end %>
             <% else %>
                 <%= link_to 'ログインして投稿者を確認する', new_user_session_path ,class: "btn btn-outline-primary mb-3" %>
             <% end %>

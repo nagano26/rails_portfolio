@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_06_094611) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_08_063754) do
   create_table "blogs", force: :cascade do |t|
     t.integer "user_id"
     t.string "title_blog"
@@ -44,6 +44,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_094611) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "talk_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["talk_id"], name: "index_entries_on_talk_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
@@ -66,6 +75,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_094611) do
     t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "talk_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["talk_id"], name: "index_messages_on_talk_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "normals", force: :cascade do |t|
@@ -107,6 +126,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_094611) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "talks", force: :cascade do |t|
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -132,4 +157,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_094611) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "entries", "talks"
+  add_foreign_key "entries", "users"
+  add_foreign_key "messages", "talks"
+  add_foreign_key "messages", "users"
 end

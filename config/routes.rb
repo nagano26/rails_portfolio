@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :blogs
+  resources :messages, :only => [:create]
+  resources :talks, :only => [:create, :show, :index]
+  resources :blogs, only: [:create, :index]
   resources :lifestyles do
     resources :comment_lifestyles, only: [:create, :destroy]
   end

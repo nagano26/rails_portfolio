@@ -36,7 +36,9 @@
                 <h3>投稿者：<%=@work.user.username %>さん</h3>
             <p class="mt-4"><%= @work.user.profile %></p>
             <% if user_signed_in? %>
-                <%= link_to "投稿者情報を確認", user_path(@work.user),class: "btn btn-outline-primary mb-3" %>
+                <% if @work.user_id != current_user.id %>
+                    <%= link_to "投稿者情報を確認", user_path(@work.user),class: "btn btn-outline-primary mb-3" %>
+                <% end %>
             <% else %>
                 <%= link_to 'ログインして投稿者を確認する', new_user_session_path ,class: "btn btn-outline-primary mb-3" %>
             <% end %>

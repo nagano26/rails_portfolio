@@ -18,7 +18,21 @@
         </table>
         <% if @user.id == current_user.id %>
           <%= link_to '編集', edit_user_path(@user), class: "btn btn-outline-primary mb-3"%>
-        <% end %>    
+        <% end %>   
+        <div class="btn-group">
+          <% if @user.id != current_user.id %>
+            <% if @isTalk == true %>
+              <p class="col-12"><a href="/talks/<%= @talkId %>" class="btn btn-primary mb-5 mr-3">メッセージを送る</a>
+            <% else %>
+              <%= form_for @talk do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, :value=> @user.id %>
+                <% end %>
+                <%= f.submit "メッセージを送る", class:"btn btn-primary" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

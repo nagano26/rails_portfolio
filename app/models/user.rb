@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :comment_works, dependent: :destroy
   has_many :comment_lifestyles, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
 
   def already_favorited?(room)
