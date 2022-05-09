@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_08_063754) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_09_072858) do
   create_table "blogs", force: :cascade do |t|
     t.integer "user_id"
     t.string "title_blog"
@@ -60,6 +60,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_063754) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "good_normals", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "normal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lifestyles", force: :cascade do |t|
     t.integer "user_id"
     t.string "price_life"
@@ -95,6 +102,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_063754) do
     t.text "preparation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "talk_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "message_id"
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["message_id"], name: "index_notifications_on_message_id"
+    t.index ["talk_id"], name: "index_notifications_on_talk_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "reservations", force: :cascade do |t|

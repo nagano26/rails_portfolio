@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <% if current_user.already_good?(@normal) %>
+    <%= button_to normal_good_normals_path(@normal), method: :delete do %>
+      <i class="fas fa-heart btn-outline-primary"><%= @normal.good_normals.count %></i>
+    <% end %>
+  <% else %>
+    <%= button_to normal_good_normals_path(@normal), method: :post do %>
+      <i class="fas fa-heart"><%= @normal.good_normals.count %></i>
+    <% end %>
+  <% end %>
+<% end %>

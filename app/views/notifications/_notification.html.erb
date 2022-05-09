@@ -1,0 +1,20 @@
+<% visitor = notification.visitor %>
+<section>
+  <div class="container mb-5 mt-3">
+    <%= link_to user_path(visitor) do %>
+      <%= visitor.username %>
+    <% end %>
+    <span>さんが</span>
+    <% case notification.action %>
+    <% when 'dm' %>
+      <p>あなたに</p>
+      <div class="mb-3"><i class="fas fa-envelope">メッセージがあります</i></div>
+        <%= truncate(notification.message.content, length: 20, omission: '... (一部表示)') %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <%= link_to talk_path(notification.talk) do %>
+        <div>DMの送信画面に移動する</div>
+      <% end %>
+      <hr>
+    <% end %>
+  </div>
+</section>

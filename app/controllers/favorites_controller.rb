@@ -6,8 +6,7 @@ class FavoritesController < ApplicationController
     end
     
     def destroy
-        @room = Room.find(params[:room_id])
-        @favorite = current_user.favorites.find_by(room_id: @room.id)
+        @favorite = Favorite.find_by(room_id: params[:room_id], user_id: current_user.id)
         @favorite.destroy
         redirect_back(fallback_location: root_path)
     end

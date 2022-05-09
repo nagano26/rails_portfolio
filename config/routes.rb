@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notifications, only: :index
   resources :messages, :only => [:create]
   resources :talks, :only => [:create, :show, :index]
   resources :blogs, only: [:create, :index]
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :normals do
     resources :comments, only: [:create, :destroy]
+    resource :good_normals, only: [:create, :destroy]
   end
   get 'search' => 'rooms#search'
   devise_for :users

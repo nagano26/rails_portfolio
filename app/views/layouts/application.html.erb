@@ -44,6 +44,16 @@
           <li class="nav-item">
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "navbar-item nav-link"%>
           </li>
+          <li class="nav-item">
+            <%= link_to (notifications_path), class: "navbar-item nav-link" do %>
+              <% if unchecked_notifications.any?%>
+                <p>通知（未読あり）</p>
+              <% else %>
+                <p>通知(未読なし)</p>
+              <% end %>
+            <% end %>
+          </li>
+
         </ul>
         <div class="dropdown mr-3">
           <button type="button" id="dropdown1"

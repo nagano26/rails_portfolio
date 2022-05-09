@@ -16,10 +16,16 @@ class User < ApplicationRecord
   has_many :comment_lifestyles, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
-
+  has_many :good_normals, dependent: :destroy
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   def already_favorited?(room)
     self.favorites.exists?(room_id: room.id)
+  end
+  
+  def already_good?(normal)
+    self.good_normals.exists?(normal_id: normal.id)
   end
   
   with_options presence: true do
