@@ -4,6 +4,7 @@ class CommentLifestylesController < ApplicationController
         @Comment = @lifestyle.comment_lifestyles.build(comment_params)
         @Comment.user_id = current_user.id
         @Comment.save
+        @lifestyle.create_notification_comment_lifestyle!(current_user, @Comment.id)
         redirect_to request.referer, notice: "コメントを投稿しました！！"
     end
 

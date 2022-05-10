@@ -1,6 +1,8 @@
 class GoodWorksController < ApplicationController
     def create
         @GoodWork = current_user.good_works.create(work_id: params[:work_id])
+        @work = @GoodWork.work
+        @work.create_notification_like_work!(current_user)
         redirect_back(fallback_location: root_path)
     end
 

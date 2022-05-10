@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      normal: 移住基本情報
+    attributes:
+      normal:
+        before_address: 以前のお住まい
+        current_address: 現在のお住まい
+        trigger: 移住のきっかけ
+        preparation: 移住の準備について

@@ -16,7 +16,9 @@
   <div class="container mt-5">
     <% @lifestyles.each do |lifestyle| %>
     <table class="table table-striped table-bordered">
-      <caption><%= link_to "投稿者情報を確認", user_path(lifestyle.user) %></caption>
+      <% if user_signed_in? %>
+        <caption><%= link_to "投稿者情報を確認", user_path(lifestyle.user) %></caption>
+      <% end %>
       <tr>
       <th>ユーザー名</th>
       <th>移住先の一ヶ月の生活費</th>

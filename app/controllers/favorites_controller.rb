@@ -1,7 +1,9 @@
-yuclass FavoritesController < ApplicationController
+class FavoritesController < ApplicationController
 
     def create
         @favorite = current_user.favorites.create(room_id: params[:room_id])
+        @room = @favorite.room
+        @room.create_notification_like_room!(current_user)
         redirect_back(fallback_location: root_path)
     end
     

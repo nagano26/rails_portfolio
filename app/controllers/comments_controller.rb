@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
         @Comment.user_id = current_user.id
         @Comment.save
         @normal.create_notification_comment!(current_user, @Comment.id)
-        redirect_to request.referer, notice: "コメントを投稿しました！！"
+        redirect_to request.referer, notice: "コメントを投稿しました！！"    
     end
 
     def destroy

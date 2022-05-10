@@ -4,6 +4,7 @@ class CommentWorksController < ApplicationController
         @Comment = @work.comment_works.build(comment_params)
         @Comment.user_id = current_user.id
         @Comment.save
+        @work.create_notification_comment_work!(current_user, @Comment.id)
         redirect_to request.referer, notice: "コメントを投稿しました！！"
     end
 

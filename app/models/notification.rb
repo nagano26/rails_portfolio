@@ -4,6 +4,11 @@ class Notification < ApplicationRecord
     belongs_to :talk, optional: true
     belongs_to :comment, optional: true
     belongs_to :normal, optional: true
+    belongs_to :work, optional: true
+    belongs_to :lifestyle, optional: true
+    belongs_to :room, optional: true
+    belongs_to :comment_work, optional: true
+    belongs_to :comment_lifestyle, optional: true
     belongs_to :visitor, class_name: 'User', optional: true
     belongs_to :visited, class_name: 'User', optional: true
 end

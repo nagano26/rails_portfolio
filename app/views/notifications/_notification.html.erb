@@ -19,9 +19,34 @@
       <%= link_to "あなたの投稿", notification.normal, style: "font-weight: bold;" %>
       <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
       <hr>
+    <% when 'comment_work' then %>
+      <div class="mb-3"><i class="fa fa-comment-o "></i>コメントを送りました</i></div>
+      <%= link_to "あなたの投稿", notification.work, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
+    <% when 'comment_lifestyle' then %>
+      <div class="mb-1"><i class="fa fa-thumbs-o-up "></i>コメントを送りました</i></div>
+      <%= link_to "あなたの投稿", notification.lifestyle, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
+    <% when 'favorite' then %>
+      <div class="mb-1"><i class="fa fa-thumbs-o-up "></i>投稿にいいねしました</i></div>
+      <%= link_to "あなたの投稿", notification.room, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
     <% when 'good_normal' then %>
       <div class="mb-1"><i class="fa fa-thumbs-o-up "></i>投稿にいいねしました</i></div>
       <%= link_to "あなたの投稿", notification.normal, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
+    <% when 'good_work' then %>
+      <div class="mb-1"><i class="fa fa-thumbs-o-up "></i>投稿にいいねしました</i></div>
+      <%= link_to "あなたの投稿", notification.work, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
+    <% when 'good_lifestyle' then %>
+      <div class="mb-1"><i class="fa fa-thumbs-o-up "></i>投稿にいいねしました</i></div>
+      <%= link_to "あなたの投稿", notification.lifestyle, style: "font-weight: bold;" %>
       <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
       <hr>
     <% end %>
