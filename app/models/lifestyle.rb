@@ -1,6 +1,7 @@
 class Lifestyle < ApplicationRecord
     belongs_to :user
     has_many :comment_lifestyles, dependent: :destroy
+    has_many :good_lifestyles, dependent: :destroy
     
     with_options presence: true do
         validates :price_life

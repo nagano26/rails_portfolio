@@ -1,6 +1,8 @@
 class GoodNormalsController < ApplicationController
     def create
         @GoodNormal = current_user.good_normals.create(normal_id: params[:normal_id])
+        @normal = @GoodNormal.normal
+        @normal.create_notification_like!(current_user)
         redirect_back(fallback_location: root_path)
     end
 

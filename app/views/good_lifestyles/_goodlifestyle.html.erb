@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <% if current_user.already_good_lifestyle?(@lifestyle) %>
+    <%= button_to lifestyle_good_lifestyles_path(@lifestyle), method: :delete do %>
+      <i class="fas fa-heart btn-outline-primary"><%= @lifestyle.good_lifestyles.count %></i>
+    <% end %>
+  <% else %>
+    <%= button_to lifestyle_good_lifestyles_path(@lifestyle), method: :post do %>
+      <i class="fas fa-heart"><%= @lifestyle.good_lifestyles.count %></i>
+    <% end %>
+  <% end %>
+<% end %>

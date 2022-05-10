@@ -11,43 +11,21 @@
   </div>
 </header>
 
-<section class="section">
-  <div class="container mt-5">
-    <% @blogs.each do |blog| %>
-      <table class="table table-striped table-bordered ">
-        <tr>
-        <th>タイトル</th>
-        <th>ブログ</th>
-        <th>投稿時間</th>
-        </tr>
-        <tr>
-        <td><%= blog.title_blog %></td>
-        <td><%= blog.body_blog%></td>
-        <td><%= blog.created_at.to_s(:datetime_jp) %></td>
-        </tr>
-      </table>
-    <% end %>
+<section>
+  <div class="container">
+    <div class="card shadow p-5  mx-auto mt-5 col-10">
+    <h3 class="form-area-title mb-3">非同期処理の投稿（未実装）</h3>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+      投稿する
+    </button>
   </div>
 </section>
 
-
-
-
-
-
-
-
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
-  投稿する
-</button>
-
-<div class="modal fade" id="modal1" tabindex="-1"
-      role="dialog" aria-labelledby="label1" aria-hidden="true">
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="label1">移住あるあるを教えて下さい</h5>
+        <h5 class="modal-title" id="label1">あなたの知る地域の豆知識を教えて下さい</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -59,7 +37,7 @@
             <%= f.text_field :title_blog, class:"form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :body_blog, "あるあるな内容" %>
+            <%= f.label :body_blog, "あなたの地域の豆知識" %>
             <%= f.text_area :body_blog, class:"form-control" %>
           </div>
         </div>
@@ -70,20 +48,4 @@
       <% end %>
     </div>
   </div>
-</div>
-
-<div class="container">
- <div class="row">
-    <div class="col-3 bg-light">
-      <div class="sidebar_content">
-        <div>sa</div>
-        <div>sa</div>
-        <div>sa</div>
-     </div>
-    </div>
-    
-    <div class="col-9">
-      <div>sugoi</div>
-    </div>
- </div>
 </div>

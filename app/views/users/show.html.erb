@@ -199,7 +199,7 @@
 
 <section class="section bg-light">
   <div class="container mt-4">
-    <h2 class="title">あなたのお部屋投稿一覧</h2>
+    <h2 class="title">お部屋投稿一覧</h2>
       <div class="count mb-3">現在の投稿数：<%= @user.rooms.count %></div>
       <% if @user.id == current_user.id %>
         <% if @user.rooms.count == 0 %>

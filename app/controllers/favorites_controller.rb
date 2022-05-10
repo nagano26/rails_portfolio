@@ -1,4 +1,4 @@
-class FavoritesController < ApplicationController
+yuclass FavoritesController < ApplicationController
 
     def create
         @favorite = current_user.favorites.create(room_id: params[:room_id])

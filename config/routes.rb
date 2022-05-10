@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   resources :blogs, only: [:create, :index]
   resources :lifestyles do
     resources :comment_lifestyles, only: [:create, :destroy]
+    resource :good_lifestyles, only: [:create, :destroy]
   end
   get 'subhome/index'
   resources :works do
     resources :comment_works, only: [:create, :destroy]
+    resource :good_works, only: [:create, :destroy]
   end
   resources :normals do
     resources :comments, only: [:create, :destroy]

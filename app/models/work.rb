@@ -1,6 +1,7 @@
 class Work < ApplicationRecord
     belongs_to :user
     has_many :comment_works, dependent: :destroy
+    has_many :good_works, dependent: :destroy
     
     with_options presence: true do
         validates :before_work

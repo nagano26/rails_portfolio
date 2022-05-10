@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :good_normals, dependent: :destroy
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :good_works, dependent: :destroy
+  has_many :good_lifestyles, dependent: :destroy
 
   def already_favorited?(room)
     self.favorites.exists?(room_id: room.id)
@@ -26,6 +28,14 @@ class User < ApplicationRecord
   
   def already_good?(normal)
     self.good_normals.exists?(normal_id: normal.id)
+  end
+  
+  def already_good_work?(work)
+    self.good_works.exists?(work_id: work.id)
+  end
+
+  def already_good_lifestyle?(lifestyle)
+    self.good_lifestyles.exists?(lifestyle_id: lifestyle.id)
   end
   
   with_options presence: true do
