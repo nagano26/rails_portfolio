@@ -85,7 +85,7 @@ end
 
 gem 'devise'
 gem "bulma-rails"
-gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile", require: "refile/rails", github: "JunichiIto/refile", branch: "use-env-secret-key-base"
 gem "refile-mini_magick"
 gem 'rails-i18n'
 gem 'bootstrap', '~> 4.4.1'
