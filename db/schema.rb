@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_10_104545) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_10_100159) do
   create_table "blogs", force: :cascade do |t|
     t.integer "user_id"
     t.string "title_blog"
@@ -123,6 +123,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_104545) do
     t.integer "normal_id"
     t.integer "comment_work_id"
     t.integer "comment_lifestyle_id"
+    t.integer "comment_work"
+    t.integer "good_lifestyle"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["comment_lifestyle_id"], name: "index_notifications_on_comment_lifestyle_id"
     t.index ["comment_work_id"], name: "index_notifications_on_comment_work_id"
