@@ -120,14 +120,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_104545) do
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "message_id"
     t.integer "normal_id"
     t.integer "comment_work_id"
     t.integer "comment_lifestyle_id"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["comment_lifestyle_id"], name: "index_notifications_on_comment_lifestyle_id"
     t.index ["comment_work_id"], name: "index_notifications_on_comment_work_id"
-    t.index ["message_id"], name: "index_notifications_on_message_id"
     t.index ["normal_id"], name: "index_notifications_on_normal_id"
     t.index ["talk_id"], name: "index_notifications_on_talk_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
