@@ -1,0 +1,40 @@
+<nav class="navbar navbar-light navbar-dark bg-dark">
+  <a class="navbar-brand">移住体験登録</a>
+</nav>
+
+<%= render "shared/error", obj: @work %>
+
+<section class="section mb-5">
+  <div class="container mt-5">
+  <br>
+    <h1>移住体験の編集画面</h1>
+  </br>
+    <div class="row">
+      <div class="col-10">
+        <%= form_for @work do |f| %>
+          <div class="form-group">
+            <%= f.label :before_work, "・移住前のお仕事は？", class: "label mt-4" %>
+            <%= f.select :before_work, Ride.work_selects.keys, {prompt: "選択してください"}, class: "form-control "%>
+          </div>
+          
+          <div class="form-group">
+             <%= f.label :current_work, "・移住後のお仕事は？", class: "label mt-4" %>
+            <%= f.select :current_work, Ride.work_selects.keys, {prompt: "選択してください"}, class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :others_work  , "・移住先では、皆さんどんなお仕事をされていますか？", class: "label mt-4" %>
+            <%= f.text_area :others_work, :rows => "5", class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :message_work, "・仕事について", class: "label mt-4" %>
+            <%= f.text_area :message_work, :rows => "5", class: "form-control" %>
+          </div>
+          
+          <%= f.submit '投稿', class: "btn btn-outline-primary mt-4 mr-5" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

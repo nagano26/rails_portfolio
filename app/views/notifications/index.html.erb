@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light navbar-dark bg-dark">
+  <a class="navbar-brand">お住まいの登録 </a>
+</nav>
+<section>
+  <div class="container">
+    <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+    <% if notifications.exists? %>
+    <%= render notifications %>
+    <%= paginate notifications %>
+    <% else %>
+    <p>通知はありません</p>
+    <% end %>
+  </div>
+</section>

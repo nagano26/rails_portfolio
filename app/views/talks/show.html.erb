@@ -1,0 +1,50 @@
+<nav class="navbar navbar-light navbar-dark bg-dark">
+  <a class="navbar-brand">お住まいの登録 </a>
+</nav>
+
+<section>
+  <div class="container">
+    <br>
+      <h2>メッセージホーム</h2>
+    </br>
+    <div class="row">
+      <div class="col-12">
+        <% if @messages.present? %>
+          <% @messages.each do |m| %>
+            <div class="mx-auto mb-5">
+              <hr>
+              <div><%= simple_format m.content %><div>
+              <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.username %>さん</a></strong><br>
+              <%= m.created_at.strftime("%Y-%m-%d %H:%M")%></small>
+              <hr>
+            </div>
+          <% end %>
+        <% else %>
+          <h4 class="text-center">メッセージはまだありません</h4>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="row">
+    <h3>送信フォーム</h3>
+      <div class="col-12">
+        <%= form_for @message do |f| %>
+          <div class="form-group">
+            <%= f.text_area :content, class: "form-control", :placeholder => "メッセージを入力して下さい" %>
+            <%= f.hidden_field :talk_id, class: "form-control", :value => @talk.id %>
+          </div>
+          <div>
+            <%= f.submit "投稿する", class: "btn btn-outline-primary mb-3" %>
+          </div>
+        <% end %>
+        <div class="mb-3">
+          <%= link_to "前のページに戻る", :back %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

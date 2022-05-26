@@ -1,0 +1,52 @@
+<nav class="navbar navbar-light navbar-dark bg-dark">
+    <a class="navbar-brand">お部屋ページ</a>
+</nav>
+
+<section class="section">
+  <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+          <div class="card-image">
+            <figure class="image-fluid ">
+              <%= attachment_image_tag @room, :room_image, fallback: "no-image.png" %>
+            </figure>
+          </div>
+          <div class="card-content mt-5">
+            <div class="media">
+              <div class="media-content">
+                <h2 class="title"><%= @room.room_name %></h2>
+              </div>
+            </div>
+            <div class="content">
+              <table class="table table-striped is-narrow">
+                <tr><th>お部屋紹介</th></tr>
+                <tr><td><%= simple_format @room.room_body %></td></tr>
+                <tr><td>住所：<%=@room.address %></td></tr>
+              </table>
+              <%= link_to "一覧ページへ戻る", rooms_path, class: "btn btn-outline-primary mb-3" %>
+              <% if user_signed_in? %>
+                <%= link_to "投稿者情報を確認", user_path(@room.user),class: "btn btn-outline-primary mb-3" %>
+                <%= render 'favorites/favorite', room: @room %>
+              <% else %>
+                <%= link_to 'ログインして投稿者を確認する', new_user_session_path ,class: "btn btn-outline-primary mb-3" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      
+      <div class="card ml-5 mb-5 mt-5" style="width:18rem;">
+        <h2 class="card-header" style="background-color:#e3f2fd;">お部屋の予約</h2>
+        <div class="card-body">
+          <article class="panel is-link">
+            <h3 class="panel-heading mb-4">
+              ￥<%= @room.room_price %>/日(宿泊料)
+            </h3>
+            <div class="panel-block">
+              <%= render "reservations/new" %>  
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

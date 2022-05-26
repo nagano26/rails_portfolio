@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      work: 移住仕事情報
+    attributes:
+      work:
+        before_work: 移住前のお仕事
+        current_work: 移住後のお仕事
+        others_work : 移住先の主なお仕事
+        message_work: 仕事について

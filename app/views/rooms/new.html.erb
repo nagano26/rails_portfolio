@@ -1,0 +1,45 @@
+<nav class="navbar navbar-light navbar-dark bg-dark">
+    <a class="navbar-brand">お住まいの登録 </a>
+</nav>
+
+<%= render "shared/error", obj: @room %>
+
+<section class="section mb-5">
+  <div class="container mt-5">
+  <br>
+    <h1>提供できるお部屋を登録する</h1>
+  <br>    
+    <div class="row">
+      <div class="col-10">
+          <%= form_for @room do |f| %>
+            <div class="form-group">
+              <%= f.label :room_name, "・部屋の名前", class: "label mt-4" %>
+              <%= f.text_field :room_name, class: "form-control" ,placeholder:"ハミングバード（自然溢れる別荘）"%>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :room_body, "・部屋の紹介", class: "label mt-4" %>
+              <%= f.text_area :room_body, :rows => "5", class: "form-control" ,placeholder:"移住者向けに貸出を行っているお部屋になります。自然の多いとても良い場所です。詳しく知りたい方は、こちらまでお問い合せ下さい。〇〇〇-〇〇〇〇-〇〇〇〇" %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :room_price, "・宿泊料(一泊)※半角で入力して下さい", class: "label mt-4" %>
+              <%= f.text_field :room_price, class: "form-control" ,placeholder:"4,000" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :address, "・住所", class: "label mt-4" %>
+              <%= f.text_field :address, class: "form-control", placeholder: "神奈川県〇〇市〇〇区〇〇〇町X-X-X 侍ビル1 XXX号室" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :room_image, "・部屋の写真", class: "label mt-4" %>
+              <%= f.attachment_field :room_image, class: "form-control-file" %>
+            </div>
+
+            <%= f.submit '投稿', class: "btn btn-outline-primary btn-block mt-4" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</section>

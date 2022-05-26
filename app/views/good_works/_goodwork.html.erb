@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <% if current_user.already_good_work?(@work) %>
+    <%= button_to work_good_works_path(@work), method: :delete do %>
+      <i class="fas fa-heart btn-outline-primary"></i><%= @work.good_works.count %>
+    <% end %>
+  <% else %>
+    <%= button_to work_good_works_path(@work), method: :post do %>
+      <i class="fas fa-heart"></i><%= @work.good_works.count %>
+    <% end %>
+  <% end %>
+<% end %>

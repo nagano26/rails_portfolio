@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      lifestyle: 移住生活情報
+    attributes:
+      lifestyle:
+        price_life: 一ヶ月の生活費
+        house_life: 住まいの探し方
+        dating_life: 近所付き合い
+        system_life: 利用した国の制度
