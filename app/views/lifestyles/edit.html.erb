@@ -1,0 +1,39 @@
+<nav class="navbar navbar-light navbar-dark bg-dark">
+  <a class="navbar-brand">移住体験登録</a>
+</nav>
+
+<%= render "shared/error", obj: @lifestyle %>
+
+<section class="section mb-5">
+  <div class="container mt-5">
+  <br>
+    <h1>移住体験の編集画面</h1>
+  </br>
+    <div class="row">
+      <div class="col-10">
+        <%= form_for @lifestyle do |f| %>
+          <div class="form-group">
+            <%= f.label :price_life, "・一ヶ月の生活費", class: "label mt-4" %>
+            <%= f.select :price_life, {'3万(家賃除く)以下':'3万(家賃除く)以下', '5万(家賃除く)以下':'5万(家賃除く)以下', '7万(家賃除く)以下':'7万(家賃除く)以下', '10万(家賃除く)以下':'10万(家賃除く)以下', '10万(家賃除く)以上': '10万(家賃除く)以上'}, { prompt: '選択してください'}, class: "form-control" %>  
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :house_life, "・住まいはどのように探しましたか？", class: "label mt-4" %>
+            <%= f.text_area :house_life, :rows => "5", class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :dating_life , "・移住先の近所付き合いについて教えて下さい", class: "label mt-4" %>
+            <%= f.text_area :dating_life, :rows => "5", class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :system_life, "・移住にあたり、利用した国の制度など教えて下さい", class: "label mt-4" %>
+            <%= f.text_area :system_life, :rows => "5", class: "form-control" %>
+          </div>
+          <%= f.submit '更新',class: "btn btn-primary mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

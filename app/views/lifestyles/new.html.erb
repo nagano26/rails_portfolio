@@ -1,0 +1,45 @@
+<header class="bg-success py-2">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-white">
+      <h2 class="display-4 fw-bolder">あなたの移住体験談</h2>
+    </div>
+  </div>
+</header>
+
+<%= render "shared/error", obj: @lifestyle %>
+
+<section class="section mb-5">
+  <div class="container mt-5">
+  <br>
+    <h1>移住生活について教えて下さい</h1>
+  <br>    
+    <div class="row">
+      <div class="col-10">
+        <%= form_for @lifestyle do |f| %>
+          <div class="form-group">
+            <%= f.label :price_life, "・一ヶ月の生活費", class: "label mt-4" %>
+            <%= f.select :price_life, {'3万(家賃除く)以下':'3万(家賃除く)以下', '5万(家賃除く)以下':'5万(家賃除く)以下', '7万(家賃除く)以下':'7万(家賃除く)以下', '10万(家賃除く)以下':'10万(家賃除く)以下', '10万(家賃除く)以上': '10万(家賃除く)以上'}, { prompt: '選択してください'}, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :house_life, "・住まいはどのように探しましたか？", class: "label mt-4" %>
+            <%= f.text_area :house_life, :rows => "5", class: "form-control" , placeholder:"移住予定の自治体に相談したところ、不動産屋を紹介してもらいたい、そこで住まいを決めました。" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :dating_life , "・移住先の近所付き合いについて教えて下さい", class: "label mt-4" %>
+            <%= f.text_area :dating_life, :rows => "5", class: "form-control", placeholder:"一ヶ月に一回、地域で集まりがあり、そこで地域の方々と食事などします。また、自治体に運営費として5,000円ほど支払いがあリます。"%>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :system_life, "・移住にあたり、利用した国の制度など教えて下さい", class: "label mt-4" %>
+            <%= f.text_area :system_life, :rows => "5", class: "form-control", placeholder: "一定の条件下、東京から移住先の地域に住民票を移動すると国から手当があるようです。" %>
+          </div>
+
+          <%= f.submit '投稿', class: "btn btn-outline-primary  mt-4 mr-5" %>
+          <%= link_to '前のページに戻る', subhome_index_path ,class: "btn btn-primary mt-4"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

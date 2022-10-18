@@ -1,6 +1,32 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :notifications, only: :index
+  resources :messages, :only => [:create]
+  resources :talks, :only => [:create, :show, :index]
+  resources :blogs, only: [:create, :index]
+  resources :lifestyles do
+    resources :comment_lifestyles, only: [:create, :destroy]
+    resource :good_lifestyles, only: [:create, :destroy]
+  end
+  get 'subhome/index'
+  resources :works do
+    resources :comment_works, only: [:create, :destroy]
+    resource :good_works, only: [:create, :destroy]
+  end
+  resources :normals do
+    resources :comments, only: [:create, :destroy]
+    resource :good_normals, only: [:create, :destroy]
+  end
+  get 'search' => 'rooms#search'
+  devise_for :users
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+  root to: "home#index"
+  resources :users
+  resources :rooms do
+    resource :favorites, only: [:create, :destroy]
+  end
+  resources :reservations
+
 end

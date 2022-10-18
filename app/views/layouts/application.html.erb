@@ -1,16 +1,110 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Task</title>
+    <title>RoomApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://kit.fontawesome.com/484e6509e8.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+  <% if flash[:notice] %>
+    <div class="notification is-info">
+      <p class="notice"><%= notice %></p>
+    </div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <div class="notification is-danger">
+      <p class="alert"><%= alert %></p>
+    </div>
+  <% end %>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <%= link_to '移住home', root_path, class: "navbar-brand" %>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <% if user_signed_in? %>
+      <div class="collapse navbar-collapse" id="Navber">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "予約できる宿一覧", rooms_path ,class: "navbar-item nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "みんな移住体験談", subhome_index_path, class: "navbar-item nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "navbar-item nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to (notifications_path), class: "navbar-item nav-link" do %>
+              <% if unchecked_notifications.any?%>
+                <i class="fas fa-envelope color">未読あり</i>
+              <% else %>
+                <i class="far fa-envelope-open">未読なし</i>
+              <% end %>
+            <% end %>
+          </li>
+
+        </ul>
+        <div class="dropdown mr-3">
+          <button type="button" id="dropdown1"
+            class="btn btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+            <%= current_user.username %>さん
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown1">
+            <%= link_to "マイページ", users_path(current_user), class: "dropdown-item" %>
+            <%= link_to "移住体験を登録", new_normal_path, class: "dropdown-item" %>
+            <%= link_to "お部屋を登録", new_room_path(current_user), class: "dropdown-item" %>
+            <%= link_to "お部屋予約", reservations_path(current_user), class: "dropdown-item" %>
+          </div>
+        </div>
+      </div>
+      <% else %>
+      <div class="collapse navbar-collapse" id="Navber">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "予約できる宿一覧", rooms_path ,class: "navbar-item nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "みんな移住体験談", subhome_index_path, class: "navbar-item nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ログイン', new_user_session_path ,class: "navbar-item nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to '登録する', new_user_registration_path ,class: "navbar-item nav-link"%>
+          </li>
+        </ul>
+      <% end %>
+      </div>
+    </div>
+  </nav>
+  <%= yield %>
+  <footer class="bg-dark py-4 mt-auto">
+  <div class="container px-5">
+      <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+          <div class="col-auto"><div class="small m-0 text-white">ポートフォリオ作成</div></div>
+          <div class="col-auto">
+              <a class="link-light small" href="#!">ポートフォリオ</a>
+              <span class="text-white mx-1">&middot;</span>
+              <a class="link-light small" href="#!">ポートフォリオ作成委員会</a>
+              <span class="text-white mx-1">&middot;</span>
+              <a class="link-light small" href="#!">連絡先</a>
+          </div>
+      </div>
+  </div>
+</footer>
   </body>
 </html>

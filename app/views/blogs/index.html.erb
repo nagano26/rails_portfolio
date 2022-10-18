@@ -1,0 +1,51 @@
+<header class="bg-success py-3">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">みんなの移住体験談</h1>
+      <p class="lead fw-normal text-white-50 mb-0 mt-5">あなたの体験談を教えて下さい</p>
+      <% if user_signed_in? %>
+      <% else %>
+        <%= link_to 'ログイン', new_user_session_path ,class: "btn btn-warning" %>
+      <% end %>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="card shadow p-5  mx-auto mt-5 col-10">
+    <h3 class="form-area-title mb-3">非同期処理の投稿（未実装）</h3>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+      投稿する
+    </button>
+  </div>
+</section>
+
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label1">あなたの知る地域の豆知識を教えて下さい</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_for @blog, remote: true do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label :title_blog, "タイトル" %>
+            <%= f.text_field :title_blog, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :body_blog, "あなたの地域の豆知識" %>
+            <%= f.text_area :body_blog, class:"form-control" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          <%= f.submit '投稿する', class: "btn btn-outline-primary " %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<% visitor = notification.visitor %>
+<section>
+  <div class="container mb-5 mt-3">
+    <%= link_to user_path(visitor) do %>
+      <%= visitor.username %>
+    <% end %>
+    <span>さんが</span>
+    <% case notification.action %>
+    <% when 'dm' then %>
+      <div class="mb-1"><i class="fas fa-envelope">メッセージを送りました</i></div>
+        内容：<%= truncate(notification.message.content, length: 20, omission: '... (一部表示)') %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <%= link_to talk_path(notification.talk) do %>
+        <div>DMの送信画面に移動する</div>
+      <% end %>
+      <hr>
+    <% when 'comment' then %>
+      <div class="mb-3"><i class="fa fa-comment-o "></i>コメントを送りました</i></div>
+      <%= link_to "あなたの投稿", notification.normal, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
+    <% when 'comment_work' then %>
+      <div class="mb-3"><i class="fa fa-comment-o "></i>コメントを送りました</i></div>
+      <%= link_to "あなたの投稿", notification.work, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
+    <% when 'comment_lifestyle' then %>
+      <div class="mb-1"><i class="fa fa-thumbs-o-up "></i>コメントを送りました</i></div>
+      <%= link_to "あなたの投稿", notification.lifestyle, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
+    <% when 'favorite' then %>
+      <div class="mb-1"><i class="fa fa-thumbs-o-up "></i>投稿にいいねしました</i></div>
+      <%= link_to "あなたの投稿", notification.room, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
+    <% when 'good_normal' then %>
+      <div class="mb-1"><i class="fa fa-thumbs-o-up "></i>投稿にいいねしました</i></div>
+      <%= link_to "あなたの投稿", notification.normal, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
+    <% when 'good_work' then %>
+      <div class="mb-1"><i class="fa fa-thumbs-o-up "></i>投稿にいいねしました</i></div>
+      <%= link_to "あなたの投稿", notification.work, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
+    <% when 'good_lifestyle' then %>
+      <div class="mb-1"><i class="fa fa-thumbs-o-up "></i>投稿にいいねしました</i></div>
+      <%= link_to "あなたの投稿", notification.lifestyle, style: "font-weight: bold;" %>
+      <p>投稿時間： <%= time_ago_in_words(notification.created_at).upcase %>前</p>
+      <hr>
+    <% end %>
+  </div>
+</section>

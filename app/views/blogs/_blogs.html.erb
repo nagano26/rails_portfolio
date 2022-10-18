@@ -1,0 +1,17 @@
+
+<div class="container mt-5">
+    <% blogs.each do |blog| %>
+        <table class="table table-striped table-bordered ">
+            <tr>
+            <th>タイトル</th>
+            <th>ブログ</th>
+            <th>投稿時間</th>
+            </tr>
+            <tr>
+            <td><%= blog.title_blog %></td>
+            <td><%= blog.body_blog%></td>
+            <td><%= blog.created_at.to_s(:datetime_jp) %></td>
+            </tr>
+        </table>
+    <% end %>
+</div>
